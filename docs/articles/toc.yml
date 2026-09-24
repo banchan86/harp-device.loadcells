@@ -1,3 +1,36 @@
 - name: Introduction
-- name: LoadCells
+- name: Overview
   href: ../index.md
+- name: Specs
+- name: LoadCells
+  href: loadcells-overview.md
+- name: Peripherals
+  href: peripherals/toc.yml
+- name: Getting Started
+- name: Ports and Connections
+  href: connections.md
+- name: Installation
+  href: installation.md
+- name: LoadCells GUI
+  href: loadcells-gui.md
+- name: Bonsai
+  href: harp-bonsai.md
+- name: Bonsai Workflows
+- name: Acquire Data
+  href: acquire-data.md
+- name: Calibrate Offsets
+  href: calibrate-offsets.md
+- name: Trigger Acquisition
+  href: trigger-acquisition.md
+- name: Configure Sync Output
+  href: configure-sync-output.md
+- name: Control Digital Outputs
+  href: control-digital-outputs.md
+- name: Detect Thresholds
+  href: detect-thresholds.md
+- name: Data Management
+- name: Logging and Analysis
+  href: logging-analysis.md
+- name: Troubleshooting
+- name: Indicators and Errors
+  href: troubleshooting.md

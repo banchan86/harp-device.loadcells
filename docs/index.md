@@ -1,48 +1,29 @@
-## Harp Load Cells Interface and Reader
+## Overview
 
-This pair of boards can be used to acquire analog signals from load cells and output their data to a USB host. It is additionally able to emit programmable digital events.
+The Harp [LoadCells](articles/loadcells-overview.md) is a force acquisition interface for behavioral neuroscience rigs. It reads up to eight load cell sensors at 1 kHz with hardware timestamps and turns force thresholds into digital events without software in the loop.
 
-![harploadcellsinterface](images/pcb.png)
+[placeholder - loadcells-with-peripherals.svg]{width=600}
 
-### Key Features ###
+Load cells output a small differential voltage that has to be amplified, offset-compensated, and timed precisely before it becomes usable behavioral data. The LoadCells splits this work across two boards. One or two [Load Cells Reader](articles/peripherals/peripherals-loadcellsreader.md) boards sit next to the sensors, amplifying and digitizing four load cells each. The LoadCells interface board collects their samples over a cable, timestamps them on the Harp clock, streams them to the computer, and can raise its digital outputs the moment a load cell crosses a configurable threshold.
 
-* Load cells interface
-  * Controls up to 2 load cells readers
-  * Digital outputs can be regulated at 3V or 5V
-* Load Cells Reader
-  * Up to 4 load cell sensors
-  * 1kHz sampling rate
-  * Load cells offset compensation
+The LoadCells provides:
 
-### Connectivity ###
+- Simultaneous acquisition from up to 8 load cells (two Load Cells Readers with 4 channels each) at 1 kHz.
+- Per-channel offset compensation to zero the resting load of each sensor.
+- 8 digital outputs that you can drive from Bonsai or trigger automatically from load cell thresholds.
+- A digital input to start and stop acquisition from external hardware, and a sync output to align other equipment.
+- Hardware timestamping and synchronization with other [Harp](https://harp-tech.org/articles/about.html) devices.
+- [Bonsai](https://bonsai-rx.org/) integration for flexible experiment acquisition and control.
 
-* Load cells interface
-  * 1x BNC input signal (IN0)
-  * 1x BNC output signal (Out0)
-  * 1x screw terminal connector interface (GND, DOUT1 to DOUT8, DIN0)
-  * 2x RJ45 for digital inputs (from load cells devices)
-  * 1x stereo jack for clock sync input (CLKIN)
-  * 1x USB (for computer)
-  * 1x power barrel connector jack (12V only)
-  * 1x screw terminal connector for 5V output (GND, +5V)
-* Load Cells Reader
-  * 4x flick lock connectors (X1 to X4) with 4 analog inputs each (5V, I+, I-, 0V)
-  * 1x digital output [RJ45]
+## Getting a Device
 
-## Interface ##
+Assembled units are available from the [Open Ephys store](https://open-ephys.org/harp), or build your own using the hardware design files in the [LoadCells](https://github.com/harp-tech/device.loadcells) repository.
 
-The interface with the Harp board can be done through [Bonsai](https://bonsai-rx.org/) or a dedicated GUI (Graphical User Interface).
+> [!WARNING]
+> **TODO**: Confirm whether the LoadCells and the Load Cells Reader are stocked by the Open Ephys store, and adjust this section if they are only available as design files.
 
-In order to use this GUI, there are some software that needs to be installed:
+## Acknowledgments
 
-1 - Install the [drivers](https://bitbucket.org/fchampalimaud/downloads/downloads/UsbDriver-2.12.26.zip).
+Hardware design and GUI contributed by [Champalimaud Foundation](https://www.cf-hw.org/), Bonsai interface by [NeuroGEARS](https://neurogears.org/), testing and feedback by [Allen Institute for Neural Dynamics](https://www.allenneuraldynamics.org/), and documentation by [Open Ephys](https://open-ephys.org/).
 
-2 - Install the [runtime](https://bitbucket.org/fchampalimaud/downloads/downloads/Runtime-1.0.zip).
-
-3 - Reboot the computer.
-
-4 - Install the [GUI](https://bitbucket.org/fchampalimaud/downloads/downloads/Harp%20Load%20Cells%20v1.1.0.zip).
-
-## Licensing ##
-
-Each subdirectory will contain a license or, possibly, a set of licenses if it involves both hardware and software.
+[!INCLUDE [](./articles/version-footer.md)]

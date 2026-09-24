@@ -2,6 +2,22 @@
 uid: Harp.LoadCells.Device
 ---
 
+Use the [Harp device pattern](https://harp-tech.org/articles/operators.html#device-pattern) to initialize the device, log data, and send commands to and receive messages from the LoadCells.
+
+:::workflow
+![Harp Device Pattern](../workflows/harp-devicepattern.bonsai)
+:::
+
+Check out the following in-depth guides to learn how to access the device functionality with the `Harp.LoadCells` package:
+- [Acquire Data](../articles/acquire-data.md)
+- [Calibrate Offsets](../articles/calibrate-offsets.md)
+- [Trigger Acquisition](../articles/trigger-acquisition.md)
+- [Configure Sync Output](../articles/configure-sync-output.md)
+- [Control Digital Outputs](../articles/control-digital-outputs.md)
+- [Detect Thresholds](../articles/detect-thresholds.md)
+
+Refer to the register table below for a complete listing of the available registers on the device.
+
 <table>
   <thead>
     <tr><th colspan="2">LoadCells</th></tr>
