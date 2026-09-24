@@ -9,3 +9,9 @@ obj
 Debug
 packages
 *.componentinfo.xml
+
+# Bonsai environment and build artifacts
+.bonsai/Bonsai.exe*
+.bonsai/Packages/
+.bonsai/Settings/
+/artifacts/
