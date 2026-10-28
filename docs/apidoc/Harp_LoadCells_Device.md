@@ -85,3 +85,5 @@ Refer to the register table below for a complete listing of the available regist
 | [DO7TimeBelowThreshold](xref:Harp.LoadCells.DO7TimeBelowThreshold) | 88 | U16 |  | Write | Time (ms) below threshold value that is required to trigger a DO7 pin event. | 0  | |
 | [DO8TimeBelowThreshold](xref:Harp.LoadCells.DO8TimeBelowThreshold) | 89 | U16 |  | Write | Time (ms) below threshold value that is required to trigger a DO8 pin event. | 0  | |
 | [EnableEvents](xref:Harp.LoadCells.EnableEvents) | 90 | U8 |  | Write | Specifies the active events in the device. |  | [LoadCellEvents](xref:Harp.LoadCells.LoadCellEvents) |
+
+[!include[Registers](../../artifacts/docs/registers/registers.md)]

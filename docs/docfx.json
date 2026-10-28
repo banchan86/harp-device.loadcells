@@ -42,7 +42,8 @@
       }
     ],
     "overwrite": [
-      "apidoc/**/*.md"
+      { "files": "apidoc/**/*.md" },
+      { "src": "../artifacts/docs/registers", "files": "Harp_*.md" }
     ],
     "output": "../artifacts/docs/site/",
     "template": [
