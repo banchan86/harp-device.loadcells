@@ -79,6 +79,7 @@ registers:
     access: Write
     type: U8
     minValue: 1
+    defaultValue: 1
     maxValue: 255
     description: Pulse duration (ms) for the digital output pin 0. The pulse will only be emitted when DO0Sync == Pulse.
   DigitalOutputSet: &output

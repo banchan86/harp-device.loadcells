@@ -144,7 +144,7 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Represents an operator that groups the sequence of <see cref="LoadCells"/>" messages by register type.
+    /// Represents an operator that groups the sequence of <see cref="LoadCells"/> messages by register type.
     /// </summary>
     [Description("Groups the sequence of LoadCells messages by register type.")]
     public partial class GroupByRegister : Combinator<HarpMessage, IGroupedObservable<Type, HarpMessage>>
@@ -165,7 +165,7 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Represents an operator that writes the sequence of <see cref="LoadCells"/>" messages
+    /// Represents an operator that writes the sequence of <see cref="LoadCells"/> messages
     /// to the standard Harp storage format.
     /// </summary>
     [DefaultProperty(nameof(Path))]
@@ -434,10 +434,7 @@ namespace Harp.LoadCells
             Register = new AcquisitionState();
         }
 
-        string INamedElement.Name
-        {
-            get => $"{nameof(LoadCells)}.{GetElementDisplayName(Register)}";
-        }
+        string INamedElement.Name => GetElementDisplayName(Register);
     }
 
     /// <summary>
@@ -611,7 +608,7 @@ namespace Harp.LoadCells
             Register = new AcquisitionState();
         }
 
-        string INamedElement.Name => $"{nameof(LoadCells)}.{GetElementDisplayName(Register)}";
+        string INamedElement.Name => GetElementDisplayName(Register);
     }
 
     /// <summary>
@@ -733,11 +730,12 @@ namespace Harp.LoadCells
             Register = new AcquisitionState();
         }
 
-        string INamedElement.Name => $"{nameof(LoadCells)}.{GetElementDisplayName(Register)}";
+        string INamedElement.Name => GetElementDisplayName(Register);
     }
 
     /// <summary>
-    /// Represents a register that enables the data acquisition.
+    /// Provides methods for manipulating messages from the AcquisitionState register.
+    /// Enables the data acquisition.
     /// </summary>
     [Description("Enables the data acquisition.")]
     public partial class AcquisitionState
@@ -810,11 +808,11 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Provides methods for manipulating timestamped messages from the
-    /// AcquisitionState register.
+    /// Provides methods for parsing timestamped values from AcquisitionState register messages.
+    /// Enables the data acquisition.
     /// </summary>
     /// <seealso cref="AcquisitionState"/>
-    [Description("Filters and selects timestamped messages from the AcquisitionState register.")]
+    [Description("Enables the data acquisition.")]
     public partial class TimestampedAcquisitionState
     {
         /// <summary>
@@ -834,7 +832,8 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Represents a register that value of single ADC read from all load cell channels.
+    /// Provides methods for manipulating messages from the LoadCellData register.
+    /// Value of single ADC read from all load cell channels.
     /// </summary>
     [Description("Value of single ADC read from all load cell channels.")]
     public partial class LoadCellData
@@ -936,11 +935,11 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Provides methods for manipulating timestamped messages from the
-    /// LoadCellData register.
+    /// Provides methods for parsing timestamped values from LoadCellData register messages.
+    /// Value of single ADC read from all load cell channels.
     /// </summary>
     /// <seealso cref="LoadCellData"/>
-    [Description("Filters and selects timestamped messages from the LoadCellData register.")]
+    [Description("Value of single ADC read from all load cell channels.")]
     public partial class TimestampedLoadCellData
     {
         /// <summary>
@@ -960,7 +959,8 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Represents a register that status of the digital input pin 0. An event will be emitted when DI0Trigger == None.
+    /// Provides methods for manipulating messages from the DigitalInputState register.
+    /// Status of the digital input pin 0. An event will be emitted when DI0Trigger == None.
     /// </summary>
     [Description("Status of the digital input pin 0. An event will be emitted when DI0Trigger == None.")]
     public partial class DigitalInputState
@@ -1033,11 +1033,11 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Provides methods for manipulating timestamped messages from the
-    /// DigitalInputState register.
+    /// Provides methods for parsing timestamped values from DigitalInputState register messages.
+    /// Status of the digital input pin 0. An event will be emitted when DI0Trigger == None.
     /// </summary>
     /// <seealso cref="DigitalInputState"/>
-    [Description("Filters and selects timestamped messages from the DigitalInputState register.")]
+    [Description("Status of the digital input pin 0. An event will be emitted when DI0Trigger == None.")]
     public partial class TimestampedDigitalInputState
     {
         /// <summary>
@@ -1057,7 +1057,8 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Represents a register that status of the digital output pin 0. An periodic event will be emitted when DO0Sync == ToggleEachSecond.
+    /// Provides methods for manipulating messages from the SyncOutputState register.
+    /// Status of the digital output pin 0. An periodic event will be emitted when DO0Sync == ToggleEachSecond.
     /// </summary>
     [Description("Status of the digital output pin 0. An periodic event will be emitted when DO0Sync == ToggleEachSecond.")]
     public partial class SyncOutputState
@@ -1130,11 +1131,11 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Provides methods for manipulating timestamped messages from the
-    /// SyncOutputState register.
+    /// Provides methods for parsing timestamped values from SyncOutputState register messages.
+    /// Status of the digital output pin 0. An periodic event will be emitted when DO0Sync == ToggleEachSecond.
     /// </summary>
     /// <seealso cref="SyncOutputState"/>
-    [Description("Filters and selects timestamped messages from the SyncOutputState register.")]
+    [Description("Status of the digital output pin 0. An periodic event will be emitted when DO0Sync == ToggleEachSecond.")]
     public partial class TimestampedSyncOutputState
     {
         /// <summary>
@@ -1154,7 +1155,8 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Represents a register that state of the buffer thresholds.
+    /// Provides methods for manipulating messages from the BufferThresholdState register.
+    /// State of the buffer thresholds.
     /// </summary>
     [Description("State of the buffer thresholds.")]
     internal partial class BufferThresholdState
@@ -1176,9 +1178,10 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Represents a register that reserved.
+    /// Provides methods for manipulating messages from the Reserved0 register.
+    /// Reserved.
     /// </summary>
-    [Description("Reserved")]
+    [Description("Reserved.")]
     internal partial class Reserved0
     {
         /// <summary>
@@ -1198,9 +1201,10 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Represents a register that reserved.
+    /// Provides methods for manipulating messages from the Reserved1 register.
+    /// Reserved.
     /// </summary>
-    [Description("Reserved")]
+    [Description("Reserved.")]
     internal partial class Reserved1
     {
         /// <summary>
@@ -1220,7 +1224,8 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Represents a register that configuration of the digital input pin 0.
+    /// Provides methods for manipulating messages from the DI0Trigger register.
+    /// Configuration of the digital input pin 0.
     /// </summary>
     [Description("Configuration of the digital input pin 0.")]
     public partial class DI0Trigger
@@ -1293,11 +1298,11 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Provides methods for manipulating timestamped messages from the
-    /// DI0Trigger register.
+    /// Provides methods for parsing timestamped values from DI0Trigger register messages.
+    /// Configuration of the digital input pin 0.
     /// </summary>
     /// <seealso cref="DI0Trigger"/>
-    [Description("Filters and selects timestamped messages from the DI0Trigger register.")]
+    [Description("Configuration of the digital input pin 0.")]
     public partial class TimestampedDI0Trigger
     {
         /// <summary>
@@ -1317,7 +1322,8 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Represents a register that configuration of the digital output pin 0.
+    /// Provides methods for manipulating messages from the DO0Sync register.
+    /// Configuration of the digital output pin 0.
     /// </summary>
     [Description("Configuration of the digital output pin 0.")]
     public partial class DO0Sync
@@ -1390,11 +1396,11 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Provides methods for manipulating timestamped messages from the
-    /// DO0Sync register.
+    /// Provides methods for parsing timestamped values from DO0Sync register messages.
+    /// Configuration of the digital output pin 0.
     /// </summary>
     /// <seealso cref="DO0Sync"/>
-    [Description("Filters and selects timestamped messages from the DO0Sync register.")]
+    [Description("Configuration of the digital output pin 0.")]
     public partial class TimestampedDO0Sync
     {
         /// <summary>
@@ -1414,7 +1420,8 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Represents a register that pulse duration (ms) for the digital output pin 0. The pulse will only be emitted when DO0Sync == Pulse.
+    /// Provides methods for manipulating messages from the DO0PulseWidth register.
+    /// Pulse duration (ms) for the digital output pin 0. The pulse will only be emitted when DO0Sync == Pulse.
     /// </summary>
     [Description("Pulse duration (ms) for the digital output pin 0. The pulse will only be emitted when DO0Sync == Pulse.")]
     public partial class DO0PulseWidth
@@ -1486,11 +1493,11 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Provides methods for manipulating timestamped messages from the
-    /// DO0PulseWidth register.
+    /// Provides methods for parsing timestamped values from DO0PulseWidth register messages.
+    /// Pulse duration (ms) for the digital output pin 0. The pulse will only be emitted when DO0Sync == Pulse.
     /// </summary>
     /// <seealso cref="DO0PulseWidth"/>
-    [Description("Filters and selects timestamped messages from the DO0PulseWidth register.")]
+    [Description("Pulse duration (ms) for the digital output pin 0. The pulse will only be emitted when DO0Sync == Pulse.")]
     public partial class TimestampedDO0PulseWidth
     {
         /// <summary>
@@ -1510,7 +1517,8 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Represents a register that set the specified digital output lines.
+    /// Provides methods for manipulating messages from the DigitalOutputSet register.
+    /// Set the specified digital output lines.
     /// </summary>
     [Description("Set the specified digital output lines.")]
     public partial class DigitalOutputSet
@@ -1583,11 +1591,11 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Provides methods for manipulating timestamped messages from the
-    /// DigitalOutputSet register.
+    /// Provides methods for parsing timestamped values from DigitalOutputSet register messages.
+    /// Set the specified digital output lines.
     /// </summary>
     /// <seealso cref="DigitalOutputSet"/>
-    [Description("Filters and selects timestamped messages from the DigitalOutputSet register.")]
+    [Description("Set the specified digital output lines.")]
     public partial class TimestampedDigitalOutputSet
     {
         /// <summary>
@@ -1607,7 +1615,8 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Represents a register that clear the specified digital output lines.
+    /// Provides methods for manipulating messages from the DigitalOutputClear register.
+    /// Clear the specified digital output lines.
     /// </summary>
     [Description("Clear the specified digital output lines.")]
     public partial class DigitalOutputClear
@@ -1680,11 +1689,11 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Provides methods for manipulating timestamped messages from the
-    /// DigitalOutputClear register.
+    /// Provides methods for parsing timestamped values from DigitalOutputClear register messages.
+    /// Clear the specified digital output lines.
     /// </summary>
     /// <seealso cref="DigitalOutputClear"/>
-    [Description("Filters and selects timestamped messages from the DigitalOutputClear register.")]
+    [Description("Clear the specified digital output lines.")]
     public partial class TimestampedDigitalOutputClear
     {
         /// <summary>
@@ -1704,9 +1713,10 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Represents a register that toggle the specified digital output lines.
+    /// Provides methods for manipulating messages from the DigitalOutputToggle register.
+    /// Toggle the specified digital output lines.
     /// </summary>
-    [Description("Toggle the specified digital output lines")]
+    [Description("Toggle the specified digital output lines.")]
     public partial class DigitalOutputToggle
     {
         /// <summary>
@@ -1777,11 +1787,11 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Provides methods for manipulating timestamped messages from the
-    /// DigitalOutputToggle register.
+    /// Provides methods for parsing timestamped values from DigitalOutputToggle register messages.
+    /// Toggle the specified digital output lines.
     /// </summary>
     /// <seealso cref="DigitalOutputToggle"/>
-    [Description("Filters and selects timestamped messages from the DigitalOutputToggle register.")]
+    [Description("Toggle the specified digital output lines.")]
     public partial class TimestampedDigitalOutputToggle
     {
         /// <summary>
@@ -1801,7 +1811,8 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Represents a register that write the state of all digital output lines. An event will be emitted when the value of any pin was changed by a threshold event.
+    /// Provides methods for manipulating messages from the DigitalOutputState register.
+    /// Write the state of all digital output lines. An event will be emitted when the value of any pin was changed by a threshold event.
     /// </summary>
     [Description("Write the state of all digital output lines. An event will be emitted when the value of any pin was changed by a threshold event.")]
     public partial class DigitalOutputState
@@ -1874,11 +1885,11 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Provides methods for manipulating timestamped messages from the
-    /// DigitalOutputState register.
+    /// Provides methods for parsing timestamped values from DigitalOutputState register messages.
+    /// Write the state of all digital output lines. An event will be emitted when the value of any pin was changed by a threshold event.
     /// </summary>
     /// <seealso cref="DigitalOutputState"/>
-    [Description("Filters and selects timestamped messages from the DigitalOutputState register.")]
+    [Description("Write the state of all digital output lines. An event will be emitted when the value of any pin was changed by a threshold event.")]
     public partial class TimestampedDigitalOutputState
     {
         /// <summary>
@@ -1898,9 +1909,10 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Represents a register that reserved.
+    /// Provides methods for manipulating messages from the Reserved2 register.
+    /// Reserved.
     /// </summary>
-    [Description("Reserved")]
+    [Description("Reserved.")]
     internal partial class Reserved2
     {
         /// <summary>
@@ -1920,9 +1932,10 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Represents a register that reserved.
+    /// Provides methods for manipulating messages from the Reserved3 register.
+    /// Reserved.
     /// </summary>
-    [Description("Reserved")]
+    [Description("Reserved.")]
     internal partial class Reserved3
     {
         /// <summary>
@@ -1942,7 +1955,8 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Represents a register that offset value for Load Cell channel 0.
+    /// Provides methods for manipulating messages from the OffsetLoadCell0 register.
+    /// Offset value for Load Cell channel 0.
     /// </summary>
     [Description("Offset value for Load Cell channel 0.")]
     public partial class OffsetLoadCell0
@@ -2014,11 +2028,11 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Provides methods for manipulating timestamped messages from the
-    /// OffsetLoadCell0 register.
+    /// Provides methods for parsing timestamped values from OffsetLoadCell0 register messages.
+    /// Offset value for Load Cell channel 0.
     /// </summary>
     /// <seealso cref="OffsetLoadCell0"/>
-    [Description("Filters and selects timestamped messages from the OffsetLoadCell0 register.")]
+    [Description("Offset value for Load Cell channel 0.")]
     public partial class TimestampedOffsetLoadCell0
     {
         /// <summary>
@@ -2038,7 +2052,8 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Represents a register that offset value for Load Cell channel 1.
+    /// Provides methods for manipulating messages from the OffsetLoadCell1 register.
+    /// Offset value for Load Cell channel 1.
     /// </summary>
     [Description("Offset value for Load Cell channel 1.")]
     public partial class OffsetLoadCell1
@@ -2110,11 +2125,11 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Provides methods for manipulating timestamped messages from the
-    /// OffsetLoadCell1 register.
+    /// Provides methods for parsing timestamped values from OffsetLoadCell1 register messages.
+    /// Offset value for Load Cell channel 1.
     /// </summary>
     /// <seealso cref="OffsetLoadCell1"/>
-    [Description("Filters and selects timestamped messages from the OffsetLoadCell1 register.")]
+    [Description("Offset value for Load Cell channel 1.")]
     public partial class TimestampedOffsetLoadCell1
     {
         /// <summary>
@@ -2134,7 +2149,8 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Represents a register that offset value for Load Cell channel 2.
+    /// Provides methods for manipulating messages from the OffsetLoadCell2 register.
+    /// Offset value for Load Cell channel 2.
     /// </summary>
     [Description("Offset value for Load Cell channel 2.")]
     public partial class OffsetLoadCell2
@@ -2206,11 +2222,11 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Provides methods for manipulating timestamped messages from the
-    /// OffsetLoadCell2 register.
+    /// Provides methods for parsing timestamped values from OffsetLoadCell2 register messages.
+    /// Offset value for Load Cell channel 2.
     /// </summary>
     /// <seealso cref="OffsetLoadCell2"/>
-    [Description("Filters and selects timestamped messages from the OffsetLoadCell2 register.")]
+    [Description("Offset value for Load Cell channel 2.")]
     public partial class TimestampedOffsetLoadCell2
     {
         /// <summary>
@@ -2230,7 +2246,8 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Represents a register that offset value for Load Cell channel 3.
+    /// Provides methods for manipulating messages from the OffsetLoadCell3 register.
+    /// Offset value for Load Cell channel 3.
     /// </summary>
     [Description("Offset value for Load Cell channel 3.")]
     public partial class OffsetLoadCell3
@@ -2302,11 +2319,11 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Provides methods for manipulating timestamped messages from the
-    /// OffsetLoadCell3 register.
+    /// Provides methods for parsing timestamped values from OffsetLoadCell3 register messages.
+    /// Offset value for Load Cell channel 3.
     /// </summary>
     /// <seealso cref="OffsetLoadCell3"/>
-    [Description("Filters and selects timestamped messages from the OffsetLoadCell3 register.")]
+    [Description("Offset value for Load Cell channel 3.")]
     public partial class TimestampedOffsetLoadCell3
     {
         /// <summary>
@@ -2326,7 +2343,8 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Represents a register that offset value for Load Cell channel 4.
+    /// Provides methods for manipulating messages from the OffsetLoadCell4 register.
+    /// Offset value for Load Cell channel 4.
     /// </summary>
     [Description("Offset value for Load Cell channel 4.")]
     public partial class OffsetLoadCell4
@@ -2398,11 +2416,11 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Provides methods for manipulating timestamped messages from the
-    /// OffsetLoadCell4 register.
+    /// Provides methods for parsing timestamped values from OffsetLoadCell4 register messages.
+    /// Offset value for Load Cell channel 4.
     /// </summary>
     /// <seealso cref="OffsetLoadCell4"/>
-    [Description("Filters and selects timestamped messages from the OffsetLoadCell4 register.")]
+    [Description("Offset value for Load Cell channel 4.")]
     public partial class TimestampedOffsetLoadCell4
     {
         /// <summary>
@@ -2422,7 +2440,8 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Represents a register that offset value for Load Cell channel 5.
+    /// Provides methods for manipulating messages from the OffsetLoadCell5 register.
+    /// Offset value for Load Cell channel 5.
     /// </summary>
     [Description("Offset value for Load Cell channel 5.")]
     public partial class OffsetLoadCell5
@@ -2494,11 +2513,11 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Provides methods for manipulating timestamped messages from the
-    /// OffsetLoadCell5 register.
+    /// Provides methods for parsing timestamped values from OffsetLoadCell5 register messages.
+    /// Offset value for Load Cell channel 5.
     /// </summary>
     /// <seealso cref="OffsetLoadCell5"/>
-    [Description("Filters and selects timestamped messages from the OffsetLoadCell5 register.")]
+    [Description("Offset value for Load Cell channel 5.")]
     public partial class TimestampedOffsetLoadCell5
     {
         /// <summary>
@@ -2518,7 +2537,8 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Represents a register that offset value for Load Cell channel 6.
+    /// Provides methods for manipulating messages from the OffsetLoadCell6 register.
+    /// Offset value for Load Cell channel 6.
     /// </summary>
     [Description("Offset value for Load Cell channel 6.")]
     public partial class OffsetLoadCell6
@@ -2590,11 +2610,11 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Provides methods for manipulating timestamped messages from the
-    /// OffsetLoadCell6 register.
+    /// Provides methods for parsing timestamped values from OffsetLoadCell6 register messages.
+    /// Offset value for Load Cell channel 6.
     /// </summary>
     /// <seealso cref="OffsetLoadCell6"/>
-    [Description("Filters and selects timestamped messages from the OffsetLoadCell6 register.")]
+    [Description("Offset value for Load Cell channel 6.")]
     public partial class TimestampedOffsetLoadCell6
     {
         /// <summary>
@@ -2614,7 +2634,8 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Represents a register that offset value for Load Cell channel 7.
+    /// Provides methods for manipulating messages from the OffsetLoadCell7 register.
+    /// Offset value for Load Cell channel 7.
     /// </summary>
     [Description("Offset value for Load Cell channel 7.")]
     public partial class OffsetLoadCell7
@@ -2686,11 +2707,11 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Provides methods for manipulating timestamped messages from the
-    /// OffsetLoadCell7 register.
+    /// Provides methods for parsing timestamped values from OffsetLoadCell7 register messages.
+    /// Offset value for Load Cell channel 7.
     /// </summary>
     /// <seealso cref="OffsetLoadCell7"/>
-    [Description("Filters and selects timestamped messages from the OffsetLoadCell7 register.")]
+    [Description("Offset value for Load Cell channel 7.")]
     public partial class TimestampedOffsetLoadCell7
     {
         /// <summary>
@@ -2710,9 +2731,10 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Represents a register that reserved.
+    /// Provides methods for manipulating messages from the Reserved4 register.
+    /// Reserved.
     /// </summary>
-    [Description("Reserved")]
+    [Description("Reserved.")]
     internal partial class Reserved4
     {
         /// <summary>
@@ -2732,9 +2754,10 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Represents a register that reserved.
+    /// Provides methods for manipulating messages from the Reserved5 register.
+    /// Reserved.
     /// </summary>
-    [Description("Reserved")]
+    [Description("Reserved.")]
     internal partial class Reserved5
     {
         /// <summary>
@@ -2754,7 +2777,8 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Represents a register that target Load Cell that will be used to trigger a threshold event on DO1 pin.
+    /// Provides methods for manipulating messages from the DO1TargetLoadCell register.
+    /// Target Load Cell that will be used to trigger a threshold event on DO1 pin.
     /// </summary>
     [Description("Target Load Cell that will be used to trigger a threshold event on DO1 pin.")]
     public partial class DO1TargetLoadCell
@@ -2827,11 +2851,11 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Provides methods for manipulating timestamped messages from the
-    /// DO1TargetLoadCell register.
+    /// Provides methods for parsing timestamped values from DO1TargetLoadCell register messages.
+    /// Target Load Cell that will be used to trigger a threshold event on DO1 pin.
     /// </summary>
     /// <seealso cref="DO1TargetLoadCell"/>
-    [Description("Filters and selects timestamped messages from the DO1TargetLoadCell register.")]
+    [Description("Target Load Cell that will be used to trigger a threshold event on DO1 pin.")]
     public partial class TimestampedDO1TargetLoadCell
     {
         /// <summary>
@@ -2851,7 +2875,8 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Represents a register that target Load Cell that will be used to trigger a threshold event on DO2 pin.
+    /// Provides methods for manipulating messages from the DO2TargetLoadCell register.
+    /// Target Load Cell that will be used to trigger a threshold event on DO2 pin.
     /// </summary>
     [Description("Target Load Cell that will be used to trigger a threshold event on DO2 pin.")]
     public partial class DO2TargetLoadCell
@@ -2924,11 +2949,11 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Provides methods for manipulating timestamped messages from the
-    /// DO2TargetLoadCell register.
+    /// Provides methods for parsing timestamped values from DO2TargetLoadCell register messages.
+    /// Target Load Cell that will be used to trigger a threshold event on DO2 pin.
     /// </summary>
     /// <seealso cref="DO2TargetLoadCell"/>
-    [Description("Filters and selects timestamped messages from the DO2TargetLoadCell register.")]
+    [Description("Target Load Cell that will be used to trigger a threshold event on DO2 pin.")]
     public partial class TimestampedDO2TargetLoadCell
     {
         /// <summary>
@@ -2948,7 +2973,8 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Represents a register that target Load Cell that will be used to trigger a threshold event on DO3 pin.
+    /// Provides methods for manipulating messages from the DO3TargetLoadCell register.
+    /// Target Load Cell that will be used to trigger a threshold event on DO3 pin.
     /// </summary>
     [Description("Target Load Cell that will be used to trigger a threshold event on DO3 pin.")]
     public partial class DO3TargetLoadCell
@@ -3021,11 +3047,11 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Provides methods for manipulating timestamped messages from the
-    /// DO3TargetLoadCell register.
+    /// Provides methods for parsing timestamped values from DO3TargetLoadCell register messages.
+    /// Target Load Cell that will be used to trigger a threshold event on DO3 pin.
     /// </summary>
     /// <seealso cref="DO3TargetLoadCell"/>
-    [Description("Filters and selects timestamped messages from the DO3TargetLoadCell register.")]
+    [Description("Target Load Cell that will be used to trigger a threshold event on DO3 pin.")]
     public partial class TimestampedDO3TargetLoadCell
     {
         /// <summary>
@@ -3045,7 +3071,8 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Represents a register that target Load Cell that will be used to trigger a threshold event on DO4 pin.
+    /// Provides methods for manipulating messages from the DO4TargetLoadCell register.
+    /// Target Load Cell that will be used to trigger a threshold event on DO4 pin.
     /// </summary>
     [Description("Target Load Cell that will be used to trigger a threshold event on DO4 pin.")]
     public partial class DO4TargetLoadCell
@@ -3118,11 +3145,11 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Provides methods for manipulating timestamped messages from the
-    /// DO4TargetLoadCell register.
+    /// Provides methods for parsing timestamped values from DO4TargetLoadCell register messages.
+    /// Target Load Cell that will be used to trigger a threshold event on DO4 pin.
     /// </summary>
     /// <seealso cref="DO4TargetLoadCell"/>
-    [Description("Filters and selects timestamped messages from the DO4TargetLoadCell register.")]
+    [Description("Target Load Cell that will be used to trigger a threshold event on DO4 pin.")]
     public partial class TimestampedDO4TargetLoadCell
     {
         /// <summary>
@@ -3142,7 +3169,8 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Represents a register that target Load Cell that will be used to trigger a threshold event on DO5 pin.
+    /// Provides methods for manipulating messages from the DO5TargetLoadCell register.
+    /// Target Load Cell that will be used to trigger a threshold event on DO5 pin.
     /// </summary>
     [Description("Target Load Cell that will be used to trigger a threshold event on DO5 pin.")]
     public partial class DO5TargetLoadCell
@@ -3215,11 +3243,11 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Provides methods for manipulating timestamped messages from the
-    /// DO5TargetLoadCell register.
+    /// Provides methods for parsing timestamped values from DO5TargetLoadCell register messages.
+    /// Target Load Cell that will be used to trigger a threshold event on DO5 pin.
     /// </summary>
     /// <seealso cref="DO5TargetLoadCell"/>
-    [Description("Filters and selects timestamped messages from the DO5TargetLoadCell register.")]
+    [Description("Target Load Cell that will be used to trigger a threshold event on DO5 pin.")]
     public partial class TimestampedDO5TargetLoadCell
     {
         /// <summary>
@@ -3239,7 +3267,8 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Represents a register that target Load Cell that will be used to trigger a threshold event on DO6 pin.
+    /// Provides methods for manipulating messages from the DO6TargetLoadCell register.
+    /// Target Load Cell that will be used to trigger a threshold event on DO6 pin.
     /// </summary>
     [Description("Target Load Cell that will be used to trigger a threshold event on DO6 pin.")]
     public partial class DO6TargetLoadCell
@@ -3312,11 +3341,11 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Provides methods for manipulating timestamped messages from the
-    /// DO6TargetLoadCell register.
+    /// Provides methods for parsing timestamped values from DO6TargetLoadCell register messages.
+    /// Target Load Cell that will be used to trigger a threshold event on DO6 pin.
     /// </summary>
     /// <seealso cref="DO6TargetLoadCell"/>
-    [Description("Filters and selects timestamped messages from the DO6TargetLoadCell register.")]
+    [Description("Target Load Cell that will be used to trigger a threshold event on DO6 pin.")]
     public partial class TimestampedDO6TargetLoadCell
     {
         /// <summary>
@@ -3336,7 +3365,8 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Represents a register that target Load Cell that will be used to trigger a threshold event on DO7 pin.
+    /// Provides methods for manipulating messages from the DO7TargetLoadCell register.
+    /// Target Load Cell that will be used to trigger a threshold event on DO7 pin.
     /// </summary>
     [Description("Target Load Cell that will be used to trigger a threshold event on DO7 pin.")]
     public partial class DO7TargetLoadCell
@@ -3409,11 +3439,11 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Provides methods for manipulating timestamped messages from the
-    /// DO7TargetLoadCell register.
+    /// Provides methods for parsing timestamped values from DO7TargetLoadCell register messages.
+    /// Target Load Cell that will be used to trigger a threshold event on DO7 pin.
     /// </summary>
     /// <seealso cref="DO7TargetLoadCell"/>
-    [Description("Filters and selects timestamped messages from the DO7TargetLoadCell register.")]
+    [Description("Target Load Cell that will be used to trigger a threshold event on DO7 pin.")]
     public partial class TimestampedDO7TargetLoadCell
     {
         /// <summary>
@@ -3433,7 +3463,8 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Represents a register that target Load Cell that will be used to trigger a threshold event on DO8 pin.
+    /// Provides methods for manipulating messages from the DO8TargetLoadCell register.
+    /// Target Load Cell that will be used to trigger a threshold event on DO8 pin.
     /// </summary>
     [Description("Target Load Cell that will be used to trigger a threshold event on DO8 pin.")]
     public partial class DO8TargetLoadCell
@@ -3506,11 +3537,11 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Provides methods for manipulating timestamped messages from the
-    /// DO8TargetLoadCell register.
+    /// Provides methods for parsing timestamped values from DO8TargetLoadCell register messages.
+    /// Target Load Cell that will be used to trigger a threshold event on DO8 pin.
     /// </summary>
     /// <seealso cref="DO8TargetLoadCell"/>
-    [Description("Filters and selects timestamped messages from the DO8TargetLoadCell register.")]
+    [Description("Target Load Cell that will be used to trigger a threshold event on DO8 pin.")]
     public partial class TimestampedDO8TargetLoadCell
     {
         /// <summary>
@@ -3530,7 +3561,8 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Represents a register that value used to threshold a Load Cell read, and trigger DO1 pin.
+    /// Provides methods for manipulating messages from the DO1Threshold register.
+    /// Value used to threshold a Load Cell read, and trigger DO1 pin.
     /// </summary>
     [Description("Value used to threshold a Load Cell read, and trigger DO1 pin.")]
     public partial class DO1Threshold
@@ -3602,11 +3634,11 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Provides methods for manipulating timestamped messages from the
-    /// DO1Threshold register.
+    /// Provides methods for parsing timestamped values from DO1Threshold register messages.
+    /// Value used to threshold a Load Cell read, and trigger DO1 pin.
     /// </summary>
     /// <seealso cref="DO1Threshold"/>
-    [Description("Filters and selects timestamped messages from the DO1Threshold register.")]
+    [Description("Value used to threshold a Load Cell read, and trigger DO1 pin.")]
     public partial class TimestampedDO1Threshold
     {
         /// <summary>
@@ -3626,7 +3658,8 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Represents a register that value used to threshold a Load Cell read, and trigger DO2 pin.
+    /// Provides methods for manipulating messages from the DO2Threshold register.
+    /// Value used to threshold a Load Cell read, and trigger DO2 pin.
     /// </summary>
     [Description("Value used to threshold a Load Cell read, and trigger DO2 pin.")]
     public partial class DO2Threshold
@@ -3698,11 +3731,11 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Provides methods for manipulating timestamped messages from the
-    /// DO2Threshold register.
+    /// Provides methods for parsing timestamped values from DO2Threshold register messages.
+    /// Value used to threshold a Load Cell read, and trigger DO2 pin.
     /// </summary>
     /// <seealso cref="DO2Threshold"/>
-    [Description("Filters and selects timestamped messages from the DO2Threshold register.")]
+    [Description("Value used to threshold a Load Cell read, and trigger DO2 pin.")]
     public partial class TimestampedDO2Threshold
     {
         /// <summary>
@@ -3722,7 +3755,8 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Represents a register that value used to threshold a Load Cell read, and trigger DO3 pin.
+    /// Provides methods for manipulating messages from the DO3Threshold register.
+    /// Value used to threshold a Load Cell read, and trigger DO3 pin.
     /// </summary>
     [Description("Value used to threshold a Load Cell read, and trigger DO3 pin.")]
     public partial class DO3Threshold
@@ -3794,11 +3828,11 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Provides methods for manipulating timestamped messages from the
-    /// DO3Threshold register.
+    /// Provides methods for parsing timestamped values from DO3Threshold register messages.
+    /// Value used to threshold a Load Cell read, and trigger DO3 pin.
     /// </summary>
     /// <seealso cref="DO3Threshold"/>
-    [Description("Filters and selects timestamped messages from the DO3Threshold register.")]
+    [Description("Value used to threshold a Load Cell read, and trigger DO3 pin.")]
     public partial class TimestampedDO3Threshold
     {
         /// <summary>
@@ -3818,7 +3852,8 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Represents a register that value used to threshold a Load Cell read, and trigger DO4 pin.
+    /// Provides methods for manipulating messages from the DO4Threshold register.
+    /// Value used to threshold a Load Cell read, and trigger DO4 pin.
     /// </summary>
     [Description("Value used to threshold a Load Cell read, and trigger DO4 pin.")]
     public partial class DO4Threshold
@@ -3890,11 +3925,11 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Provides methods for manipulating timestamped messages from the
-    /// DO4Threshold register.
+    /// Provides methods for parsing timestamped values from DO4Threshold register messages.
+    /// Value used to threshold a Load Cell read, and trigger DO4 pin.
     /// </summary>
     /// <seealso cref="DO4Threshold"/>
-    [Description("Filters and selects timestamped messages from the DO4Threshold register.")]
+    [Description("Value used to threshold a Load Cell read, and trigger DO4 pin.")]
     public partial class TimestampedDO4Threshold
     {
         /// <summary>
@@ -3914,7 +3949,8 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Represents a register that value used to threshold a Load Cell read, and trigger DO5 pin.
+    /// Provides methods for manipulating messages from the DO5Threshold register.
+    /// Value used to threshold a Load Cell read, and trigger DO5 pin.
     /// </summary>
     [Description("Value used to threshold a Load Cell read, and trigger DO5 pin.")]
     public partial class DO5Threshold
@@ -3986,11 +4022,11 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Provides methods for manipulating timestamped messages from the
-    /// DO5Threshold register.
+    /// Provides methods for parsing timestamped values from DO5Threshold register messages.
+    /// Value used to threshold a Load Cell read, and trigger DO5 pin.
     /// </summary>
     /// <seealso cref="DO5Threshold"/>
-    [Description("Filters and selects timestamped messages from the DO5Threshold register.")]
+    [Description("Value used to threshold a Load Cell read, and trigger DO5 pin.")]
     public partial class TimestampedDO5Threshold
     {
         /// <summary>
@@ -4010,7 +4046,8 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Represents a register that value used to threshold a Load Cell read, and trigger DO6 pin.
+    /// Provides methods for manipulating messages from the DO6Threshold register.
+    /// Value used to threshold a Load Cell read, and trigger DO6 pin.
     /// </summary>
     [Description("Value used to threshold a Load Cell read, and trigger DO6 pin.")]
     public partial class DO6Threshold
@@ -4082,11 +4119,11 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Provides methods for manipulating timestamped messages from the
-    /// DO6Threshold register.
+    /// Provides methods for parsing timestamped values from DO6Threshold register messages.
+    /// Value used to threshold a Load Cell read, and trigger DO6 pin.
     /// </summary>
     /// <seealso cref="DO6Threshold"/>
-    [Description("Filters and selects timestamped messages from the DO6Threshold register.")]
+    [Description("Value used to threshold a Load Cell read, and trigger DO6 pin.")]
     public partial class TimestampedDO6Threshold
     {
         /// <summary>
@@ -4106,7 +4143,8 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Represents a register that value used to threshold a Load Cell read, and trigger DO7 pin.
+    /// Provides methods for manipulating messages from the DO7Threshold register.
+    /// Value used to threshold a Load Cell read, and trigger DO7 pin.
     /// </summary>
     [Description("Value used to threshold a Load Cell read, and trigger DO7 pin.")]
     public partial class DO7Threshold
@@ -4178,11 +4216,11 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Provides methods for manipulating timestamped messages from the
-    /// DO7Threshold register.
+    /// Provides methods for parsing timestamped values from DO7Threshold register messages.
+    /// Value used to threshold a Load Cell read, and trigger DO7 pin.
     /// </summary>
     /// <seealso cref="DO7Threshold"/>
-    [Description("Filters and selects timestamped messages from the DO7Threshold register.")]
+    [Description("Value used to threshold a Load Cell read, and trigger DO7 pin.")]
     public partial class TimestampedDO7Threshold
     {
         /// <summary>
@@ -4202,7 +4240,8 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Represents a register that value used to threshold a Load Cell read, and trigger DO8 pin.
+    /// Provides methods for manipulating messages from the DO8Threshold register.
+    /// Value used to threshold a Load Cell read, and trigger DO8 pin.
     /// </summary>
     [Description("Value used to threshold a Load Cell read, and trigger DO8 pin.")]
     public partial class DO8Threshold
@@ -4274,11 +4313,11 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Provides methods for manipulating timestamped messages from the
-    /// DO8Threshold register.
+    /// Provides methods for parsing timestamped values from DO8Threshold register messages.
+    /// Value used to threshold a Load Cell read, and trigger DO8 pin.
     /// </summary>
     /// <seealso cref="DO8Threshold"/>
-    [Description("Filters and selects timestamped messages from the DO8Threshold register.")]
+    [Description("Value used to threshold a Load Cell read, and trigger DO8 pin.")]
     public partial class TimestampedDO8Threshold
     {
         /// <summary>
@@ -4298,7 +4337,8 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Represents a register that time (ms) above threshold value that is required to trigger a DO1 pin event.
+    /// Provides methods for manipulating messages from the DO1TimeAboveThreshold register.
+    /// Time (ms) above threshold value that is required to trigger a DO1 pin event.
     /// </summary>
     [Description("Time (ms) above threshold value that is required to trigger a DO1 pin event.")]
     public partial class DO1TimeAboveThreshold
@@ -4370,11 +4410,11 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Provides methods for manipulating timestamped messages from the
-    /// DO1TimeAboveThreshold register.
+    /// Provides methods for parsing timestamped values from DO1TimeAboveThreshold register messages.
+    /// Time (ms) above threshold value that is required to trigger a DO1 pin event.
     /// </summary>
     /// <seealso cref="DO1TimeAboveThreshold"/>
-    [Description("Filters and selects timestamped messages from the DO1TimeAboveThreshold register.")]
+    [Description("Time (ms) above threshold value that is required to trigger a DO1 pin event.")]
     public partial class TimestampedDO1TimeAboveThreshold
     {
         /// <summary>
@@ -4394,7 +4434,8 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Represents a register that time (ms) above threshold value that is required to trigger a DO2 pin event.
+    /// Provides methods for manipulating messages from the DO2TimeAboveThreshold register.
+    /// Time (ms) above threshold value that is required to trigger a DO2 pin event.
     /// </summary>
     [Description("Time (ms) above threshold value that is required to trigger a DO2 pin event.")]
     public partial class DO2TimeAboveThreshold
@@ -4466,11 +4507,11 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Provides methods for manipulating timestamped messages from the
-    /// DO2TimeAboveThreshold register.
+    /// Provides methods for parsing timestamped values from DO2TimeAboveThreshold register messages.
+    /// Time (ms) above threshold value that is required to trigger a DO2 pin event.
     /// </summary>
     /// <seealso cref="DO2TimeAboveThreshold"/>
-    [Description("Filters and selects timestamped messages from the DO2TimeAboveThreshold register.")]
+    [Description("Time (ms) above threshold value that is required to trigger a DO2 pin event.")]
     public partial class TimestampedDO2TimeAboveThreshold
     {
         /// <summary>
@@ -4490,7 +4531,8 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Represents a register that time (ms) above threshold value that is required to trigger a DO3 pin event.
+    /// Provides methods for manipulating messages from the DO3TimeAboveThreshold register.
+    /// Time (ms) above threshold value that is required to trigger a DO3 pin event.
     /// </summary>
     [Description("Time (ms) above threshold value that is required to trigger a DO3 pin event.")]
     public partial class DO3TimeAboveThreshold
@@ -4562,11 +4604,11 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Provides methods for manipulating timestamped messages from the
-    /// DO3TimeAboveThreshold register.
+    /// Provides methods for parsing timestamped values from DO3TimeAboveThreshold register messages.
+    /// Time (ms) above threshold value that is required to trigger a DO3 pin event.
     /// </summary>
     /// <seealso cref="DO3TimeAboveThreshold"/>
-    [Description("Filters and selects timestamped messages from the DO3TimeAboveThreshold register.")]
+    [Description("Time (ms) above threshold value that is required to trigger a DO3 pin event.")]
     public partial class TimestampedDO3TimeAboveThreshold
     {
         /// <summary>
@@ -4586,7 +4628,8 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Represents a register that time (ms) above threshold value that is required to trigger a DO4 pin event.
+    /// Provides methods for manipulating messages from the DO4TimeAboveThreshold register.
+    /// Time (ms) above threshold value that is required to trigger a DO4 pin event.
     /// </summary>
     [Description("Time (ms) above threshold value that is required to trigger a DO4 pin event.")]
     public partial class DO4TimeAboveThreshold
@@ -4658,11 +4701,11 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Provides methods for manipulating timestamped messages from the
-    /// DO4TimeAboveThreshold register.
+    /// Provides methods for parsing timestamped values from DO4TimeAboveThreshold register messages.
+    /// Time (ms) above threshold value that is required to trigger a DO4 pin event.
     /// </summary>
     /// <seealso cref="DO4TimeAboveThreshold"/>
-    [Description("Filters and selects timestamped messages from the DO4TimeAboveThreshold register.")]
+    [Description("Time (ms) above threshold value that is required to trigger a DO4 pin event.")]
     public partial class TimestampedDO4TimeAboveThreshold
     {
         /// <summary>
@@ -4682,7 +4725,8 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Represents a register that time (ms) above threshold value that is required to trigger a DO5 pin event.
+    /// Provides methods for manipulating messages from the DO5TimeAboveThreshold register.
+    /// Time (ms) above threshold value that is required to trigger a DO5 pin event.
     /// </summary>
     [Description("Time (ms) above threshold value that is required to trigger a DO5 pin event.")]
     public partial class DO5TimeAboveThreshold
@@ -4754,11 +4798,11 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Provides methods for manipulating timestamped messages from the
-    /// DO5TimeAboveThreshold register.
+    /// Provides methods for parsing timestamped values from DO5TimeAboveThreshold register messages.
+    /// Time (ms) above threshold value that is required to trigger a DO5 pin event.
     /// </summary>
     /// <seealso cref="DO5TimeAboveThreshold"/>
-    [Description("Filters and selects timestamped messages from the DO5TimeAboveThreshold register.")]
+    [Description("Time (ms) above threshold value that is required to trigger a DO5 pin event.")]
     public partial class TimestampedDO5TimeAboveThreshold
     {
         /// <summary>
@@ -4778,7 +4822,8 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Represents a register that time (ms) above threshold value that is required to trigger a DO6 pin event.
+    /// Provides methods for manipulating messages from the DO6TimeAboveThreshold register.
+    /// Time (ms) above threshold value that is required to trigger a DO6 pin event.
     /// </summary>
     [Description("Time (ms) above threshold value that is required to trigger a DO6 pin event.")]
     public partial class DO6TimeAboveThreshold
@@ -4850,11 +4895,11 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Provides methods for manipulating timestamped messages from the
-    /// DO6TimeAboveThreshold register.
+    /// Provides methods for parsing timestamped values from DO6TimeAboveThreshold register messages.
+    /// Time (ms) above threshold value that is required to trigger a DO6 pin event.
     /// </summary>
     /// <seealso cref="DO6TimeAboveThreshold"/>
-    [Description("Filters and selects timestamped messages from the DO6TimeAboveThreshold register.")]
+    [Description("Time (ms) above threshold value that is required to trigger a DO6 pin event.")]
     public partial class TimestampedDO6TimeAboveThreshold
     {
         /// <summary>
@@ -4874,7 +4919,8 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Represents a register that time (ms) above threshold value that is required to trigger a DO7 pin event.
+    /// Provides methods for manipulating messages from the DO7TimeAboveThreshold register.
+    /// Time (ms) above threshold value that is required to trigger a DO7 pin event.
     /// </summary>
     [Description("Time (ms) above threshold value that is required to trigger a DO7 pin event.")]
     public partial class DO7TimeAboveThreshold
@@ -4946,11 +4992,11 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Provides methods for manipulating timestamped messages from the
-    /// DO7TimeAboveThreshold register.
+    /// Provides methods for parsing timestamped values from DO7TimeAboveThreshold register messages.
+    /// Time (ms) above threshold value that is required to trigger a DO7 pin event.
     /// </summary>
     /// <seealso cref="DO7TimeAboveThreshold"/>
-    [Description("Filters and selects timestamped messages from the DO7TimeAboveThreshold register.")]
+    [Description("Time (ms) above threshold value that is required to trigger a DO7 pin event.")]
     public partial class TimestampedDO7TimeAboveThreshold
     {
         /// <summary>
@@ -4970,7 +5016,8 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Represents a register that time (ms) above threshold value that is required to trigger a DO8 pin event.
+    /// Provides methods for manipulating messages from the DO8TimeAboveThreshold register.
+    /// Time (ms) above threshold value that is required to trigger a DO8 pin event.
     /// </summary>
     [Description("Time (ms) above threshold value that is required to trigger a DO8 pin event.")]
     public partial class DO8TimeAboveThreshold
@@ -5042,11 +5089,11 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Provides methods for manipulating timestamped messages from the
-    /// DO8TimeAboveThreshold register.
+    /// Provides methods for parsing timestamped values from DO8TimeAboveThreshold register messages.
+    /// Time (ms) above threshold value that is required to trigger a DO8 pin event.
     /// </summary>
     /// <seealso cref="DO8TimeAboveThreshold"/>
-    [Description("Filters and selects timestamped messages from the DO8TimeAboveThreshold register.")]
+    [Description("Time (ms) above threshold value that is required to trigger a DO8 pin event.")]
     public partial class TimestampedDO8TimeAboveThreshold
     {
         /// <summary>
@@ -5066,7 +5113,8 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Represents a register that time (ms) below threshold value that is required to trigger a DO1 pin event.
+    /// Provides methods for manipulating messages from the DO1TimeBelowThreshold register.
+    /// Time (ms) below threshold value that is required to trigger a DO1 pin event.
     /// </summary>
     [Description("Time (ms) below threshold value that is required to trigger a DO1 pin event.")]
     public partial class DO1TimeBelowThreshold
@@ -5138,11 +5186,11 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Provides methods for manipulating timestamped messages from the
-    /// DO1TimeBelowThreshold register.
+    /// Provides methods for parsing timestamped values from DO1TimeBelowThreshold register messages.
+    /// Time (ms) below threshold value that is required to trigger a DO1 pin event.
     /// </summary>
     /// <seealso cref="DO1TimeBelowThreshold"/>
-    [Description("Filters and selects timestamped messages from the DO1TimeBelowThreshold register.")]
+    [Description("Time (ms) below threshold value that is required to trigger a DO1 pin event.")]
     public partial class TimestampedDO1TimeBelowThreshold
     {
         /// <summary>
@@ -5162,7 +5210,8 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Represents a register that time (ms) below threshold value that is required to trigger a DO2 pin event.
+    /// Provides methods for manipulating messages from the DO2TimeBelowThreshold register.
+    /// Time (ms) below threshold value that is required to trigger a DO2 pin event.
     /// </summary>
     [Description("Time (ms) below threshold value that is required to trigger a DO2 pin event.")]
     public partial class DO2TimeBelowThreshold
@@ -5234,11 +5283,11 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Provides methods for manipulating timestamped messages from the
-    /// DO2TimeBelowThreshold register.
+    /// Provides methods for parsing timestamped values from DO2TimeBelowThreshold register messages.
+    /// Time (ms) below threshold value that is required to trigger a DO2 pin event.
     /// </summary>
     /// <seealso cref="DO2TimeBelowThreshold"/>
-    [Description("Filters and selects timestamped messages from the DO2TimeBelowThreshold register.")]
+    [Description("Time (ms) below threshold value that is required to trigger a DO2 pin event.")]
     public partial class TimestampedDO2TimeBelowThreshold
     {
         /// <summary>
@@ -5258,7 +5307,8 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Represents a register that time (ms) below threshold value that is required to trigger a DO3 pin event.
+    /// Provides methods for manipulating messages from the DO3TimeBelowThreshold register.
+    /// Time (ms) below threshold value that is required to trigger a DO3 pin event.
     /// </summary>
     [Description("Time (ms) below threshold value that is required to trigger a DO3 pin event.")]
     public partial class DO3TimeBelowThreshold
@@ -5330,11 +5380,11 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Provides methods for manipulating timestamped messages from the
-    /// DO3TimeBelowThreshold register.
+    /// Provides methods for parsing timestamped values from DO3TimeBelowThreshold register messages.
+    /// Time (ms) below threshold value that is required to trigger a DO3 pin event.
     /// </summary>
     /// <seealso cref="DO3TimeBelowThreshold"/>
-    [Description("Filters and selects timestamped messages from the DO3TimeBelowThreshold register.")]
+    [Description("Time (ms) below threshold value that is required to trigger a DO3 pin event.")]
     public partial class TimestampedDO3TimeBelowThreshold
     {
         /// <summary>
@@ -5354,7 +5404,8 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Represents a register that time (ms) below threshold value that is required to trigger a DO4 pin event.
+    /// Provides methods for manipulating messages from the DO4TimeBelowThreshold register.
+    /// Time (ms) below threshold value that is required to trigger a DO4 pin event.
     /// </summary>
     [Description("Time (ms) below threshold value that is required to trigger a DO4 pin event.")]
     public partial class DO4TimeBelowThreshold
@@ -5426,11 +5477,11 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Provides methods for manipulating timestamped messages from the
-    /// DO4TimeBelowThreshold register.
+    /// Provides methods for parsing timestamped values from DO4TimeBelowThreshold register messages.
+    /// Time (ms) below threshold value that is required to trigger a DO4 pin event.
     /// </summary>
     /// <seealso cref="DO4TimeBelowThreshold"/>
-    [Description("Filters and selects timestamped messages from the DO4TimeBelowThreshold register.")]
+    [Description("Time (ms) below threshold value that is required to trigger a DO4 pin event.")]
     public partial class TimestampedDO4TimeBelowThreshold
     {
         /// <summary>
@@ -5450,7 +5501,8 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Represents a register that time (ms) below threshold value that is required to trigger a DO5 pin event.
+    /// Provides methods for manipulating messages from the DO5TimeBelowThreshold register.
+    /// Time (ms) below threshold value that is required to trigger a DO5 pin event.
     /// </summary>
     [Description("Time (ms) below threshold value that is required to trigger a DO5 pin event.")]
     public partial class DO5TimeBelowThreshold
@@ -5522,11 +5574,11 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Provides methods for manipulating timestamped messages from the
-    /// DO5TimeBelowThreshold register.
+    /// Provides methods for parsing timestamped values from DO5TimeBelowThreshold register messages.
+    /// Time (ms) below threshold value that is required to trigger a DO5 pin event.
     /// </summary>
     /// <seealso cref="DO5TimeBelowThreshold"/>
-    [Description("Filters and selects timestamped messages from the DO5TimeBelowThreshold register.")]
+    [Description("Time (ms) below threshold value that is required to trigger a DO5 pin event.")]
     public partial class TimestampedDO5TimeBelowThreshold
     {
         /// <summary>
@@ -5546,7 +5598,8 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Represents a register that time (ms) below threshold value that is required to trigger a DO6 pin event.
+    /// Provides methods for manipulating messages from the DO6TimeBelowThreshold register.
+    /// Time (ms) below threshold value that is required to trigger a DO6 pin event.
     /// </summary>
     [Description("Time (ms) below threshold value that is required to trigger a DO6 pin event.")]
     public partial class DO6TimeBelowThreshold
@@ -5618,11 +5671,11 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Provides methods for manipulating timestamped messages from the
-    /// DO6TimeBelowThreshold register.
+    /// Provides methods for parsing timestamped values from DO6TimeBelowThreshold register messages.
+    /// Time (ms) below threshold value that is required to trigger a DO6 pin event.
     /// </summary>
     /// <seealso cref="DO6TimeBelowThreshold"/>
-    [Description("Filters and selects timestamped messages from the DO6TimeBelowThreshold register.")]
+    [Description("Time (ms) below threshold value that is required to trigger a DO6 pin event.")]
     public partial class TimestampedDO6TimeBelowThreshold
     {
         /// <summary>
@@ -5642,7 +5695,8 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Represents a register that time (ms) below threshold value that is required to trigger a DO7 pin event.
+    /// Provides methods for manipulating messages from the DO7TimeBelowThreshold register.
+    /// Time (ms) below threshold value that is required to trigger a DO7 pin event.
     /// </summary>
     [Description("Time (ms) below threshold value that is required to trigger a DO7 pin event.")]
     public partial class DO7TimeBelowThreshold
@@ -5714,11 +5768,11 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Provides methods for manipulating timestamped messages from the
-    /// DO7TimeBelowThreshold register.
+    /// Provides methods for parsing timestamped values from DO7TimeBelowThreshold register messages.
+    /// Time (ms) below threshold value that is required to trigger a DO7 pin event.
     /// </summary>
     /// <seealso cref="DO7TimeBelowThreshold"/>
-    [Description("Filters and selects timestamped messages from the DO7TimeBelowThreshold register.")]
+    [Description("Time (ms) below threshold value that is required to trigger a DO7 pin event.")]
     public partial class TimestampedDO7TimeBelowThreshold
     {
         /// <summary>
@@ -5738,7 +5792,8 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Represents a register that time (ms) below threshold value that is required to trigger a DO8 pin event.
+    /// Provides methods for manipulating messages from the DO8TimeBelowThreshold register.
+    /// Time (ms) below threshold value that is required to trigger a DO8 pin event.
     /// </summary>
     [Description("Time (ms) below threshold value that is required to trigger a DO8 pin event.")]
     public partial class DO8TimeBelowThreshold
@@ -5810,11 +5865,11 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Provides methods for manipulating timestamped messages from the
-    /// DO8TimeBelowThreshold register.
+    /// Provides methods for parsing timestamped values from DO8TimeBelowThreshold register messages.
+    /// Time (ms) below threshold value that is required to trigger a DO8 pin event.
     /// </summary>
     /// <seealso cref="DO8TimeBelowThreshold"/>
-    [Description("Filters and selects timestamped messages from the DO8TimeBelowThreshold register.")]
+    [Description("Time (ms) below threshold value that is required to trigger a DO8 pin event.")]
     public partial class TimestampedDO8TimeBelowThreshold
     {
         /// <summary>
@@ -5834,7 +5889,8 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Represents a register that specifies the active events in the device.
+    /// Provides methods for manipulating messages from the EnableEvents register.
+    /// Specifies the active events in the device.
     /// </summary>
     [Description("Specifies the active events in the device.")]
     public partial class EnableEvents
@@ -5907,11 +5963,11 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Provides methods for manipulating timestamped messages from the
-    /// EnableEvents register.
+    /// Provides methods for parsing timestamped values from EnableEvents register messages.
+    /// Specifies the active events in the device.
     /// </summary>
     /// <seealso cref="EnableEvents"/>
-    [Description("Filters and selects timestamped messages from the EnableEvents register.")]
+    [Description("Specifies the active events in the device.")]
     public partial class TimestampedEnableEvents
     {
         /// <summary>
@@ -6101,21 +6157,21 @@ namespace Harp.LoadCells
             Payload = new CreateAcquisitionStatePayload();
         }
 
-        string INamedElement.Name => $"{nameof(LoadCells)}.{GetElementDisplayName(Payload)}";
+        string INamedElement.Name => GetElementDisplayName(Payload);
     }
 
     /// <summary>
-    /// Represents an operator that creates a message payload
-    /// that enables the data acquisition.
+    /// Represents an operator that creates a message payload for the AcquisitionState register.
+    /// Enables the data acquisition.
     /// </summary>
     [DisplayName("AcquisitionStatePayload")]
-    [Description("Creates a message payload that enables the data acquisition.")]
+    [Description("Enables the data acquisition.")]
     public partial class CreateAcquisitionStatePayload
     {
         /// <summary>
-        /// Gets or sets the value that enables the data acquisition.
+        /// Gets or sets the value for the AcquisitionState register.
         /// </summary>
-        [Description("The value that enables the data acquisition.")]
+        [Description("The value for the AcquisitionState register.")]
         public EnableFlag AcquisitionState { get; set; }
 
         /// <summary>
@@ -6128,7 +6184,7 @@ namespace Harp.LoadCells
         }
 
         /// <summary>
-        /// Creates a message that enables the data acquisition.
+        /// Creates a message for the AcquisitionState register.
         /// </summary>
         /// <param name="messageType">Specifies the type of the created message.</param>
         /// <returns>A new message for the AcquisitionState register.</returns>
@@ -6139,15 +6195,14 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Represents an operator that creates a timestamped message payload
-    /// that enables the data acquisition.
+    /// Represents an operator that creates a timestamped message payload for the AcquisitionState register.
+    /// Enables the data acquisition.
     /// </summary>
     [DisplayName("TimestampedAcquisitionStatePayload")]
-    [Description("Creates a timestamped message payload that enables the data acquisition.")]
     public partial class CreateTimestampedAcquisitionStatePayload : CreateAcquisitionStatePayload
     {
         /// <summary>
-        /// Creates a timestamped message that enables the data acquisition.
+        /// Creates a timestamped message for the AcquisitionState register.
         /// </summary>
         /// <param name="timestamp">The timestamp of the message payload, in seconds.</param>
         /// <param name="messageType">Specifies the type of the created message.</param>
@@ -6159,11 +6214,11 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Represents an operator that creates a message payload
-    /// that value of single ADC read from all load cell channels.
+    /// Represents an operator that creates a message payload for the LoadCellData register.
+    /// Value of single ADC read from all load cell channels.
     /// </summary>
     [DisplayName("LoadCellDataPayload")]
-    [Description("Creates a message payload that value of single ADC read from all load cell channels.")]
+    [Description("Value of single ADC read from all load cell channels.")]
     public partial class CreateLoadCellDataPayload
     {
         /// <summary>
@@ -6233,7 +6288,7 @@ namespace Harp.LoadCells
         }
 
         /// <summary>
-        /// Creates a message that value of single ADC read from all load cell channels.
+        /// Creates a message for the LoadCellData register.
         /// </summary>
         /// <param name="messageType">Specifies the type of the created message.</param>
         /// <returns>A new message for the LoadCellData register.</returns>
@@ -6244,15 +6299,14 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Represents an operator that creates a timestamped message payload
-    /// that value of single ADC read from all load cell channels.
+    /// Represents an operator that creates a timestamped message payload for the LoadCellData register.
+    /// Value of single ADC read from all load cell channels.
     /// </summary>
     [DisplayName("TimestampedLoadCellDataPayload")]
-    [Description("Creates a timestamped message payload that value of single ADC read from all load cell channels.")]
     public partial class CreateTimestampedLoadCellDataPayload : CreateLoadCellDataPayload
     {
         /// <summary>
-        /// Creates a timestamped message that value of single ADC read from all load cell channels.
+        /// Creates a timestamped message for the LoadCellData register.
         /// </summary>
         /// <param name="timestamp">The timestamp of the message payload, in seconds.</param>
         /// <param name="messageType">Specifies the type of the created message.</param>
@@ -6264,17 +6318,17 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Represents an operator that creates a message payload
-    /// that status of the digital input pin 0. An event will be emitted when DI0Trigger == None.
+    /// Represents an operator that creates a message payload for the DigitalInputState register.
+    /// Status of the digital input pin 0. An event will be emitted when DI0Trigger == None.
     /// </summary>
     [DisplayName("DigitalInputStatePayload")]
-    [Description("Creates a message payload that status of the digital input pin 0. An event will be emitted when DI0Trigger == None.")]
+    [Description("Status of the digital input pin 0. An event will be emitted when DI0Trigger == None.")]
     public partial class CreateDigitalInputStatePayload
     {
         /// <summary>
-        /// Gets or sets the value that status of the digital input pin 0. An event will be emitted when DI0Trigger == None.
+        /// Gets or sets the value for the DigitalInputState register.
         /// </summary>
-        [Description("The value that status of the digital input pin 0. An event will be emitted when DI0Trigger == None.")]
+        [Description("The value for the DigitalInputState register.")]
         public DigitalInputs DigitalInputState { get; set; }
 
         /// <summary>
@@ -6287,7 +6341,7 @@ namespace Harp.LoadCells
         }
 
         /// <summary>
-        /// Creates a message that status of the digital input pin 0. An event will be emitted when DI0Trigger == None.
+        /// Creates a message for the DigitalInputState register.
         /// </summary>
         /// <param name="messageType">Specifies the type of the created message.</param>
         /// <returns>A new message for the DigitalInputState register.</returns>
@@ -6298,15 +6352,14 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Represents an operator that creates a timestamped message payload
-    /// that status of the digital input pin 0. An event will be emitted when DI0Trigger == None.
+    /// Represents an operator that creates a timestamped message payload for the DigitalInputState register.
+    /// Status of the digital input pin 0. An event will be emitted when DI0Trigger == None.
     /// </summary>
     [DisplayName("TimestampedDigitalInputStatePayload")]
-    [Description("Creates a timestamped message payload that status of the digital input pin 0. An event will be emitted when DI0Trigger == None.")]
     public partial class CreateTimestampedDigitalInputStatePayload : CreateDigitalInputStatePayload
     {
         /// <summary>
-        /// Creates a timestamped message that status of the digital input pin 0. An event will be emitted when DI0Trigger == None.
+        /// Creates a timestamped message for the DigitalInputState register.
         /// </summary>
         /// <param name="timestamp">The timestamp of the message payload, in seconds.</param>
         /// <param name="messageType">Specifies the type of the created message.</param>
@@ -6318,17 +6371,17 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Represents an operator that creates a message payload
-    /// that status of the digital output pin 0. An periodic event will be emitted when DO0Sync == ToggleEachSecond.
+    /// Represents an operator that creates a message payload for the SyncOutputState register.
+    /// Status of the digital output pin 0. An periodic event will be emitted when DO0Sync == ToggleEachSecond.
     /// </summary>
     [DisplayName("SyncOutputStatePayload")]
-    [Description("Creates a message payload that status of the digital output pin 0. An periodic event will be emitted when DO0Sync == ToggleEachSecond.")]
+    [Description("Status of the digital output pin 0. An periodic event will be emitted when DO0Sync == ToggleEachSecond.")]
     public partial class CreateSyncOutputStatePayload
     {
         /// <summary>
-        /// Gets or sets the value that status of the digital output pin 0. An periodic event will be emitted when DO0Sync == ToggleEachSecond.
+        /// Gets or sets the value for the SyncOutputState register.
         /// </summary>
-        [Description("The value that status of the digital output pin 0. An periodic event will be emitted when DO0Sync == ToggleEachSecond.")]
+        [Description("The value for the SyncOutputState register.")]
         public SyncOutputs SyncOutputState { get; set; }
 
         /// <summary>
@@ -6341,7 +6394,7 @@ namespace Harp.LoadCells
         }
 
         /// <summary>
-        /// Creates a message that status of the digital output pin 0. An periodic event will be emitted when DO0Sync == ToggleEachSecond.
+        /// Creates a message for the SyncOutputState register.
         /// </summary>
         /// <param name="messageType">Specifies the type of the created message.</param>
         /// <returns>A new message for the SyncOutputState register.</returns>
@@ -6352,15 +6405,14 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Represents an operator that creates a timestamped message payload
-    /// that status of the digital output pin 0. An periodic event will be emitted when DO0Sync == ToggleEachSecond.
+    /// Represents an operator that creates a timestamped message payload for the SyncOutputState register.
+    /// Status of the digital output pin 0. An periodic event will be emitted when DO0Sync == ToggleEachSecond.
     /// </summary>
     [DisplayName("TimestampedSyncOutputStatePayload")]
-    [Description("Creates a timestamped message payload that status of the digital output pin 0. An periodic event will be emitted when DO0Sync == ToggleEachSecond.")]
     public partial class CreateTimestampedSyncOutputStatePayload : CreateSyncOutputStatePayload
     {
         /// <summary>
-        /// Creates a timestamped message that status of the digital output pin 0. An periodic event will be emitted when DO0Sync == ToggleEachSecond.
+        /// Creates a timestamped message for the SyncOutputState register.
         /// </summary>
         /// <param name="timestamp">The timestamp of the message payload, in seconds.</param>
         /// <param name="messageType">Specifies the type of the created message.</param>
@@ -6372,17 +6424,17 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Represents an operator that creates a message payload
-    /// that configuration of the digital input pin 0.
+    /// Represents an operator that creates a message payload for the DI0Trigger register.
+    /// Configuration of the digital input pin 0.
     /// </summary>
     [DisplayName("DI0TriggerPayload")]
-    [Description("Creates a message payload that configuration of the digital input pin 0.")]
+    [Description("Configuration of the digital input pin 0.")]
     public partial class CreateDI0TriggerPayload
     {
         /// <summary>
-        /// Gets or sets the value that configuration of the digital input pin 0.
+        /// Gets or sets the value for the DI0Trigger register.
         /// </summary>
-        [Description("The value that configuration of the digital input pin 0.")]
+        [Description("The value for the DI0Trigger register.")]
         public TriggerConfig DI0Trigger { get; set; }
 
         /// <summary>
@@ -6395,7 +6447,7 @@ namespace Harp.LoadCells
         }
 
         /// <summary>
-        /// Creates a message that configuration of the digital input pin 0.
+        /// Creates a message for the DI0Trigger register.
         /// </summary>
         /// <param name="messageType">Specifies the type of the created message.</param>
         /// <returns>A new message for the DI0Trigger register.</returns>
@@ -6406,15 +6458,14 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Represents an operator that creates a timestamped message payload
-    /// that configuration of the digital input pin 0.
+    /// Represents an operator that creates a timestamped message payload for the DI0Trigger register.
+    /// Configuration of the digital input pin 0.
     /// </summary>
     [DisplayName("TimestampedDI0TriggerPayload")]
-    [Description("Creates a timestamped message payload that configuration of the digital input pin 0.")]
     public partial class CreateTimestampedDI0TriggerPayload : CreateDI0TriggerPayload
     {
         /// <summary>
-        /// Creates a timestamped message that configuration of the digital input pin 0.
+        /// Creates a timestamped message for the DI0Trigger register.
         /// </summary>
         /// <param name="timestamp">The timestamp of the message payload, in seconds.</param>
         /// <param name="messageType">Specifies the type of the created message.</param>
@@ -6426,17 +6477,17 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Represents an operator that creates a message payload
-    /// that configuration of the digital output pin 0.
+    /// Represents an operator that creates a message payload for the DO0Sync register.
+    /// Configuration of the digital output pin 0.
     /// </summary>
     [DisplayName("DO0SyncPayload")]
-    [Description("Creates a message payload that configuration of the digital output pin 0.")]
+    [Description("Configuration of the digital output pin 0.")]
     public partial class CreateDO0SyncPayload
     {
         /// <summary>
-        /// Gets or sets the value that configuration of the digital output pin 0.
+        /// Gets or sets the value for the DO0Sync register.
         /// </summary>
-        [Description("The value that configuration of the digital output pin 0.")]
+        [Description("The value for the DO0Sync register.")]
         public SyncConfig DO0Sync { get; set; }
 
         /// <summary>
@@ -6449,7 +6500,7 @@ namespace Harp.LoadCells
         }
 
         /// <summary>
-        /// Creates a message that configuration of the digital output pin 0.
+        /// Creates a message for the DO0Sync register.
         /// </summary>
         /// <param name="messageType">Specifies the type of the created message.</param>
         /// <returns>A new message for the DO0Sync register.</returns>
@@ -6460,15 +6511,14 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Represents an operator that creates a timestamped message payload
-    /// that configuration of the digital output pin 0.
+    /// Represents an operator that creates a timestamped message payload for the DO0Sync register.
+    /// Configuration of the digital output pin 0.
     /// </summary>
     [DisplayName("TimestampedDO0SyncPayload")]
-    [Description("Creates a timestamped message payload that configuration of the digital output pin 0.")]
     public partial class CreateTimestampedDO0SyncPayload : CreateDO0SyncPayload
     {
         /// <summary>
-        /// Creates a timestamped message that configuration of the digital output pin 0.
+        /// Creates a timestamped message for the DO0Sync register.
         /// </summary>
         /// <param name="timestamp">The timestamp of the message payload, in seconds.</param>
         /// <param name="messageType">Specifies the type of the created message.</param>
@@ -6480,19 +6530,19 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Represents an operator that creates a message payload
-    /// that pulse duration (ms) for the digital output pin 0. The pulse will only be emitted when DO0Sync == Pulse.
+    /// Represents an operator that creates a message payload for the DO0PulseWidth register.
+    /// Pulse duration (ms) for the digital output pin 0. The pulse will only be emitted when DO0Sync == Pulse.
     /// </summary>
     [DisplayName("DO0PulseWidthPayload")]
-    [Description("Creates a message payload that pulse duration (ms) for the digital output pin 0. The pulse will only be emitted when DO0Sync == Pulse.")]
+    [Description("Pulse duration (ms) for the digital output pin 0. The pulse will only be emitted when DO0Sync == Pulse.")]
     public partial class CreateDO0PulseWidthPayload
     {
         /// <summary>
-        /// Gets or sets the value that pulse duration (ms) for the digital output pin 0. The pulse will only be emitted when DO0Sync == Pulse.
+        /// Gets or sets the value for the DO0PulseWidth register.
         /// </summary>
         [Range(min: 1, max: 255)]
         [Editor(DesignTypes.NumericUpDownEditor, DesignTypes.UITypeEditor)]
-        [Description("The value that pulse duration (ms) for the digital output pin 0. The pulse will only be emitted when DO0Sync == Pulse.")]
+        [Description("The value for the DO0PulseWidth register.")]
         public byte DO0PulseWidth { get; set; } = 1;
 
         /// <summary>
@@ -6505,7 +6555,7 @@ namespace Harp.LoadCells
         }
 
         /// <summary>
-        /// Creates a message that pulse duration (ms) for the digital output pin 0. The pulse will only be emitted when DO0Sync == Pulse.
+        /// Creates a message for the DO0PulseWidth register.
         /// </summary>
         /// <param name="messageType">Specifies the type of the created message.</param>
         /// <returns>A new message for the DO0PulseWidth register.</returns>
@@ -6516,15 +6566,14 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Represents an operator that creates a timestamped message payload
-    /// that pulse duration (ms) for the digital output pin 0. The pulse will only be emitted when DO0Sync == Pulse.
+    /// Represents an operator that creates a timestamped message payload for the DO0PulseWidth register.
+    /// Pulse duration (ms) for the digital output pin 0. The pulse will only be emitted when DO0Sync == Pulse.
     /// </summary>
     [DisplayName("TimestampedDO0PulseWidthPayload")]
-    [Description("Creates a timestamped message payload that pulse duration (ms) for the digital output pin 0. The pulse will only be emitted when DO0Sync == Pulse.")]
     public partial class CreateTimestampedDO0PulseWidthPayload : CreateDO0PulseWidthPayload
     {
         /// <summary>
-        /// Creates a timestamped message that pulse duration (ms) for the digital output pin 0. The pulse will only be emitted when DO0Sync == Pulse.
+        /// Creates a timestamped message for the DO0PulseWidth register.
         /// </summary>
         /// <param name="timestamp">The timestamp of the message payload, in seconds.</param>
         /// <param name="messageType">Specifies the type of the created message.</param>
@@ -6536,17 +6585,17 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Represents an operator that creates a message payload
-    /// that set the specified digital output lines.
+    /// Represents an operator that creates a message payload for the DigitalOutputSet register.
+    /// Set the specified digital output lines.
     /// </summary>
     [DisplayName("DigitalOutputSetPayload")]
-    [Description("Creates a message payload that set the specified digital output lines.")]
+    [Description("Set the specified digital output lines.")]
     public partial class CreateDigitalOutputSetPayload
     {
         /// <summary>
-        /// Gets or sets the value that set the specified digital output lines.
+        /// Gets or sets the value for the DigitalOutputSet register.
         /// </summary>
-        [Description("The value that set the specified digital output lines.")]
+        [Description("The value for the DigitalOutputSet register.")]
         public DigitalOutputs DigitalOutputSet { get; set; }
 
         /// <summary>
@@ -6559,7 +6608,7 @@ namespace Harp.LoadCells
         }
 
         /// <summary>
-        /// Creates a message that set the specified digital output lines.
+        /// Creates a message for the DigitalOutputSet register.
         /// </summary>
         /// <param name="messageType">Specifies the type of the created message.</param>
         /// <returns>A new message for the DigitalOutputSet register.</returns>
@@ -6570,15 +6619,14 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Represents an operator that creates a timestamped message payload
-    /// that set the specified digital output lines.
+    /// Represents an operator that creates a timestamped message payload for the DigitalOutputSet register.
+    /// Set the specified digital output lines.
     /// </summary>
     [DisplayName("TimestampedDigitalOutputSetPayload")]
-    [Description("Creates a timestamped message payload that set the specified digital output lines.")]
     public partial class CreateTimestampedDigitalOutputSetPayload : CreateDigitalOutputSetPayload
     {
         /// <summary>
-        /// Creates a timestamped message that set the specified digital output lines.
+        /// Creates a timestamped message for the DigitalOutputSet register.
         /// </summary>
         /// <param name="timestamp">The timestamp of the message payload, in seconds.</param>
         /// <param name="messageType">Specifies the type of the created message.</param>
@@ -6590,17 +6638,17 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Represents an operator that creates a message payload
-    /// that clear the specified digital output lines.
+    /// Represents an operator that creates a message payload for the DigitalOutputClear register.
+    /// Clear the specified digital output lines.
     /// </summary>
     [DisplayName("DigitalOutputClearPayload")]
-    [Description("Creates a message payload that clear the specified digital output lines.")]
+    [Description("Clear the specified digital output lines.")]
     public partial class CreateDigitalOutputClearPayload
     {
         /// <summary>
-        /// Gets or sets the value that clear the specified digital output lines.
+        /// Gets or sets the value for the DigitalOutputClear register.
         /// </summary>
-        [Description("The value that clear the specified digital output lines.")]
+        [Description("The value for the DigitalOutputClear register.")]
         public DigitalOutputs DigitalOutputClear { get; set; }
 
         /// <summary>
@@ -6613,7 +6661,7 @@ namespace Harp.LoadCells
         }
 
         /// <summary>
-        /// Creates a message that clear the specified digital output lines.
+        /// Creates a message for the DigitalOutputClear register.
         /// </summary>
         /// <param name="messageType">Specifies the type of the created message.</param>
         /// <returns>A new message for the DigitalOutputClear register.</returns>
@@ -6624,15 +6672,14 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Represents an operator that creates a timestamped message payload
-    /// that clear the specified digital output lines.
+    /// Represents an operator that creates a timestamped message payload for the DigitalOutputClear register.
+    /// Clear the specified digital output lines.
     /// </summary>
     [DisplayName("TimestampedDigitalOutputClearPayload")]
-    [Description("Creates a timestamped message payload that clear the specified digital output lines.")]
     public partial class CreateTimestampedDigitalOutputClearPayload : CreateDigitalOutputClearPayload
     {
         /// <summary>
-        /// Creates a timestamped message that clear the specified digital output lines.
+        /// Creates a timestamped message for the DigitalOutputClear register.
         /// </summary>
         /// <param name="timestamp">The timestamp of the message payload, in seconds.</param>
         /// <param name="messageType">Specifies the type of the created message.</param>
@@ -6644,17 +6691,17 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Represents an operator that creates a message payload
-    /// that toggle the specified digital output lines.
+    /// Represents an operator that creates a message payload for the DigitalOutputToggle register.
+    /// Toggle the specified digital output lines.
     /// </summary>
     [DisplayName("DigitalOutputTogglePayload")]
-    [Description("Creates a message payload that toggle the specified digital output lines.")]
+    [Description("Toggle the specified digital output lines.")]
     public partial class CreateDigitalOutputTogglePayload
     {
         /// <summary>
-        /// Gets or sets the value that toggle the specified digital output lines.
+        /// Gets or sets the value for the DigitalOutputToggle register.
         /// </summary>
-        [Description("The value that toggle the specified digital output lines.")]
+        [Description("The value for the DigitalOutputToggle register.")]
         public DigitalOutputs DigitalOutputToggle { get; set; }
 
         /// <summary>
@@ -6667,7 +6714,7 @@ namespace Harp.LoadCells
         }
 
         /// <summary>
-        /// Creates a message that toggle the specified digital output lines.
+        /// Creates a message for the DigitalOutputToggle register.
         /// </summary>
         /// <param name="messageType">Specifies the type of the created message.</param>
         /// <returns>A new message for the DigitalOutputToggle register.</returns>
@@ -6678,15 +6725,14 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Represents an operator that creates a timestamped message payload
-    /// that toggle the specified digital output lines.
+    /// Represents an operator that creates a timestamped message payload for the DigitalOutputToggle register.
+    /// Toggle the specified digital output lines.
     /// </summary>
     [DisplayName("TimestampedDigitalOutputTogglePayload")]
-    [Description("Creates a timestamped message payload that toggle the specified digital output lines.")]
     public partial class CreateTimestampedDigitalOutputTogglePayload : CreateDigitalOutputTogglePayload
     {
         /// <summary>
-        /// Creates a timestamped message that toggle the specified digital output lines.
+        /// Creates a timestamped message for the DigitalOutputToggle register.
         /// </summary>
         /// <param name="timestamp">The timestamp of the message payload, in seconds.</param>
         /// <param name="messageType">Specifies the type of the created message.</param>
@@ -6698,17 +6744,17 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Represents an operator that creates a message payload
-    /// that write the state of all digital output lines. An event will be emitted when the value of any pin was changed by a threshold event.
+    /// Represents an operator that creates a message payload for the DigitalOutputState register.
+    /// Write the state of all digital output lines. An event will be emitted when the value of any pin was changed by a threshold event.
     /// </summary>
     [DisplayName("DigitalOutputStatePayload")]
-    [Description("Creates a message payload that write the state of all digital output lines. An event will be emitted when the value of any pin was changed by a threshold event.")]
+    [Description("Write the state of all digital output lines. An event will be emitted when the value of any pin was changed by a threshold event.")]
     public partial class CreateDigitalOutputStatePayload
     {
         /// <summary>
-        /// Gets or sets the value that write the state of all digital output lines. An event will be emitted when the value of any pin was changed by a threshold event.
+        /// Gets or sets the value for the DigitalOutputState register.
         /// </summary>
-        [Description("The value that write the state of all digital output lines. An event will be emitted when the value of any pin was changed by a threshold event.")]
+        [Description("The value for the DigitalOutputState register.")]
         public DigitalOutputs DigitalOutputState { get; set; }
 
         /// <summary>
@@ -6721,7 +6767,7 @@ namespace Harp.LoadCells
         }
 
         /// <summary>
-        /// Creates a message that write the state of all digital output lines. An event will be emitted when the value of any pin was changed by a threshold event.
+        /// Creates a message for the DigitalOutputState register.
         /// </summary>
         /// <param name="messageType">Specifies the type of the created message.</param>
         /// <returns>A new message for the DigitalOutputState register.</returns>
@@ -6732,15 +6778,14 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Represents an operator that creates a timestamped message payload
-    /// that write the state of all digital output lines. An event will be emitted when the value of any pin was changed by a threshold event.
+    /// Represents an operator that creates a timestamped message payload for the DigitalOutputState register.
+    /// Write the state of all digital output lines. An event will be emitted when the value of any pin was changed by a threshold event.
     /// </summary>
     [DisplayName("TimestampedDigitalOutputStatePayload")]
-    [Description("Creates a timestamped message payload that write the state of all digital output lines. An event will be emitted when the value of any pin was changed by a threshold event.")]
     public partial class CreateTimestampedDigitalOutputStatePayload : CreateDigitalOutputStatePayload
     {
         /// <summary>
-        /// Creates a timestamped message that write the state of all digital output lines. An event will be emitted when the value of any pin was changed by a threshold event.
+        /// Creates a timestamped message for the DigitalOutputState register.
         /// </summary>
         /// <param name="timestamp">The timestamp of the message payload, in seconds.</param>
         /// <param name="messageType">Specifies the type of the created message.</param>
@@ -6752,19 +6797,19 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Represents an operator that creates a message payload
-    /// that offset value for Load Cell channel 0.
+    /// Represents an operator that creates a message payload for the OffsetLoadCell0 register.
+    /// Offset value for Load Cell channel 0.
     /// </summary>
     [DisplayName("OffsetLoadCell0Payload")]
-    [Description("Creates a message payload that offset value for Load Cell channel 0.")]
+    [Description("Offset value for Load Cell channel 0.")]
     public partial class CreateOffsetLoadCell0Payload
     {
         /// <summary>
-        /// Gets or sets the value that offset value for Load Cell channel 0.
+        /// Gets or sets the value for the OffsetLoadCell0 register.
         /// </summary>
         [Range(min: -255, max: 255)]
         [Editor(DesignTypes.NumericUpDownEditor, DesignTypes.UITypeEditor)]
-        [Description("The value that offset value for Load Cell channel 0.")]
+        [Description("The value for the OffsetLoadCell0 register.")]
         public short OffsetLoadCell0 { get; set; } = 0;
 
         /// <summary>
@@ -6777,7 +6822,7 @@ namespace Harp.LoadCells
         }
 
         /// <summary>
-        /// Creates a message that offset value for Load Cell channel 0.
+        /// Creates a message for the OffsetLoadCell0 register.
         /// </summary>
         /// <param name="messageType">Specifies the type of the created message.</param>
         /// <returns>A new message for the OffsetLoadCell0 register.</returns>
@@ -6788,15 +6833,14 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Represents an operator that creates a timestamped message payload
-    /// that offset value for Load Cell channel 0.
+    /// Represents an operator that creates a timestamped message payload for the OffsetLoadCell0 register.
+    /// Offset value for Load Cell channel 0.
     /// </summary>
     [DisplayName("TimestampedOffsetLoadCell0Payload")]
-    [Description("Creates a timestamped message payload that offset value for Load Cell channel 0.")]
     public partial class CreateTimestampedOffsetLoadCell0Payload : CreateOffsetLoadCell0Payload
     {
         /// <summary>
-        /// Creates a timestamped message that offset value for Load Cell channel 0.
+        /// Creates a timestamped message for the OffsetLoadCell0 register.
         /// </summary>
         /// <param name="timestamp">The timestamp of the message payload, in seconds.</param>
         /// <param name="messageType">Specifies the type of the created message.</param>
@@ -6808,19 +6852,19 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Represents an operator that creates a message payload
-    /// that offset value for Load Cell channel 1.
+    /// Represents an operator that creates a message payload for the OffsetLoadCell1 register.
+    /// Offset value for Load Cell channel 1.
     /// </summary>
     [DisplayName("OffsetLoadCell1Payload")]
-    [Description("Creates a message payload that offset value for Load Cell channel 1.")]
+    [Description("Offset value for Load Cell channel 1.")]
     public partial class CreateOffsetLoadCell1Payload
     {
         /// <summary>
-        /// Gets or sets the value that offset value for Load Cell channel 1.
+        /// Gets or sets the value for the OffsetLoadCell1 register.
         /// </summary>
         [Range(min: -255, max: 255)]
         [Editor(DesignTypes.NumericUpDownEditor, DesignTypes.UITypeEditor)]
-        [Description("The value that offset value for Load Cell channel 1.")]
+        [Description("The value for the OffsetLoadCell1 register.")]
         public short OffsetLoadCell1 { get; set; } = 0;
 
         /// <summary>
@@ -6833,7 +6877,7 @@ namespace Harp.LoadCells
         }
 
         /// <summary>
-        /// Creates a message that offset value for Load Cell channel 1.
+        /// Creates a message for the OffsetLoadCell1 register.
         /// </summary>
         /// <param name="messageType">Specifies the type of the created message.</param>
         /// <returns>A new message for the OffsetLoadCell1 register.</returns>
@@ -6844,15 +6888,14 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Represents an operator that creates a timestamped message payload
-    /// that offset value for Load Cell channel 1.
+    /// Represents an operator that creates a timestamped message payload for the OffsetLoadCell1 register.
+    /// Offset value for Load Cell channel 1.
     /// </summary>
     [DisplayName("TimestampedOffsetLoadCell1Payload")]
-    [Description("Creates a timestamped message payload that offset value for Load Cell channel 1.")]
     public partial class CreateTimestampedOffsetLoadCell1Payload : CreateOffsetLoadCell1Payload
     {
         /// <summary>
-        /// Creates a timestamped message that offset value for Load Cell channel 1.
+        /// Creates a timestamped message for the OffsetLoadCell1 register.
         /// </summary>
         /// <param name="timestamp">The timestamp of the message payload, in seconds.</param>
         /// <param name="messageType">Specifies the type of the created message.</param>
@@ -6864,19 +6907,19 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Represents an operator that creates a message payload
-    /// that offset value for Load Cell channel 2.
+    /// Represents an operator that creates a message payload for the OffsetLoadCell2 register.
+    /// Offset value for Load Cell channel 2.
     /// </summary>
     [DisplayName("OffsetLoadCell2Payload")]
-    [Description("Creates a message payload that offset value for Load Cell channel 2.")]
+    [Description("Offset value for Load Cell channel 2.")]
     public partial class CreateOffsetLoadCell2Payload
     {
         /// <summary>
-        /// Gets or sets the value that offset value for Load Cell channel 2.
+        /// Gets or sets the value for the OffsetLoadCell2 register.
         /// </summary>
         [Range(min: -255, max: 255)]
         [Editor(DesignTypes.NumericUpDownEditor, DesignTypes.UITypeEditor)]
-        [Description("The value that offset value for Load Cell channel 2.")]
+        [Description("The value for the OffsetLoadCell2 register.")]
         public short OffsetLoadCell2 { get; set; } = 0;
 
         /// <summary>
@@ -6889,7 +6932,7 @@ namespace Harp.LoadCells
         }
 
         /// <summary>
-        /// Creates a message that offset value for Load Cell channel 2.
+        /// Creates a message for the OffsetLoadCell2 register.
         /// </summary>
         /// <param name="messageType">Specifies the type of the created message.</param>
         /// <returns>A new message for the OffsetLoadCell2 register.</returns>
@@ -6900,15 +6943,14 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Represents an operator that creates a timestamped message payload
-    /// that offset value for Load Cell channel 2.
+    /// Represents an operator that creates a timestamped message payload for the OffsetLoadCell2 register.
+    /// Offset value for Load Cell channel 2.
     /// </summary>
     [DisplayName("TimestampedOffsetLoadCell2Payload")]
-    [Description("Creates a timestamped message payload that offset value for Load Cell channel 2.")]
     public partial class CreateTimestampedOffsetLoadCell2Payload : CreateOffsetLoadCell2Payload
     {
         /// <summary>
-        /// Creates a timestamped message that offset value for Load Cell channel 2.
+        /// Creates a timestamped message for the OffsetLoadCell2 register.
         /// </summary>
         /// <param name="timestamp">The timestamp of the message payload, in seconds.</param>
         /// <param name="messageType">Specifies the type of the created message.</param>
@@ -6920,19 +6962,19 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Represents an operator that creates a message payload
-    /// that offset value for Load Cell channel 3.
+    /// Represents an operator that creates a message payload for the OffsetLoadCell3 register.
+    /// Offset value for Load Cell channel 3.
     /// </summary>
     [DisplayName("OffsetLoadCell3Payload")]
-    [Description("Creates a message payload that offset value for Load Cell channel 3.")]
+    [Description("Offset value for Load Cell channel 3.")]
     public partial class CreateOffsetLoadCell3Payload
     {
         /// <summary>
-        /// Gets or sets the value that offset value for Load Cell channel 3.
+        /// Gets or sets the value for the OffsetLoadCell3 register.
         /// </summary>
         [Range(min: -255, max: 255)]
         [Editor(DesignTypes.NumericUpDownEditor, DesignTypes.UITypeEditor)]
-        [Description("The value that offset value for Load Cell channel 3.")]
+        [Description("The value for the OffsetLoadCell3 register.")]
         public short OffsetLoadCell3 { get; set; } = 0;
 
         /// <summary>
@@ -6945,7 +6987,7 @@ namespace Harp.LoadCells
         }
 
         /// <summary>
-        /// Creates a message that offset value for Load Cell channel 3.
+        /// Creates a message for the OffsetLoadCell3 register.
         /// </summary>
         /// <param name="messageType">Specifies the type of the created message.</param>
         /// <returns>A new message for the OffsetLoadCell3 register.</returns>
@@ -6956,15 +6998,14 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Represents an operator that creates a timestamped message payload
-    /// that offset value for Load Cell channel 3.
+    /// Represents an operator that creates a timestamped message payload for the OffsetLoadCell3 register.
+    /// Offset value for Load Cell channel 3.
     /// </summary>
     [DisplayName("TimestampedOffsetLoadCell3Payload")]
-    [Description("Creates a timestamped message payload that offset value for Load Cell channel 3.")]
     public partial class CreateTimestampedOffsetLoadCell3Payload : CreateOffsetLoadCell3Payload
     {
         /// <summary>
-        /// Creates a timestamped message that offset value for Load Cell channel 3.
+        /// Creates a timestamped message for the OffsetLoadCell3 register.
         /// </summary>
         /// <param name="timestamp">The timestamp of the message payload, in seconds.</param>
         /// <param name="messageType">Specifies the type of the created message.</param>
@@ -6976,19 +7017,19 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Represents an operator that creates a message payload
-    /// that offset value for Load Cell channel 4.
+    /// Represents an operator that creates a message payload for the OffsetLoadCell4 register.
+    /// Offset value for Load Cell channel 4.
     /// </summary>
     [DisplayName("OffsetLoadCell4Payload")]
-    [Description("Creates a message payload that offset value for Load Cell channel 4.")]
+    [Description("Offset value for Load Cell channel 4.")]
     public partial class CreateOffsetLoadCell4Payload
     {
         /// <summary>
-        /// Gets or sets the value that offset value for Load Cell channel 4.
+        /// Gets or sets the value for the OffsetLoadCell4 register.
         /// </summary>
         [Range(min: -255, max: 255)]
         [Editor(DesignTypes.NumericUpDownEditor, DesignTypes.UITypeEditor)]
-        [Description("The value that offset value for Load Cell channel 4.")]
+        [Description("The value for the OffsetLoadCell4 register.")]
         public short OffsetLoadCell4 { get; set; } = 0;
 
         /// <summary>
@@ -7001,7 +7042,7 @@ namespace Harp.LoadCells
         }
 
         /// <summary>
-        /// Creates a message that offset value for Load Cell channel 4.
+        /// Creates a message for the OffsetLoadCell4 register.
         /// </summary>
         /// <param name="messageType">Specifies the type of the created message.</param>
         /// <returns>A new message for the OffsetLoadCell4 register.</returns>
@@ -7012,15 +7053,14 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Represents an operator that creates a timestamped message payload
-    /// that offset value for Load Cell channel 4.
+    /// Represents an operator that creates a timestamped message payload for the OffsetLoadCell4 register.
+    /// Offset value for Load Cell channel 4.
     /// </summary>
     [DisplayName("TimestampedOffsetLoadCell4Payload")]
-    [Description("Creates a timestamped message payload that offset value for Load Cell channel 4.")]
     public partial class CreateTimestampedOffsetLoadCell4Payload : CreateOffsetLoadCell4Payload
     {
         /// <summary>
-        /// Creates a timestamped message that offset value for Load Cell channel 4.
+        /// Creates a timestamped message for the OffsetLoadCell4 register.
         /// </summary>
         /// <param name="timestamp">The timestamp of the message payload, in seconds.</param>
         /// <param name="messageType">Specifies the type of the created message.</param>
@@ -7032,19 +7072,19 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Represents an operator that creates a message payload
-    /// that offset value for Load Cell channel 5.
+    /// Represents an operator that creates a message payload for the OffsetLoadCell5 register.
+    /// Offset value for Load Cell channel 5.
     /// </summary>
     [DisplayName("OffsetLoadCell5Payload")]
-    [Description("Creates a message payload that offset value for Load Cell channel 5.")]
+    [Description("Offset value for Load Cell channel 5.")]
     public partial class CreateOffsetLoadCell5Payload
     {
         /// <summary>
-        /// Gets or sets the value that offset value for Load Cell channel 5.
+        /// Gets or sets the value for the OffsetLoadCell5 register.
         /// </summary>
         [Range(min: -255, max: 255)]
         [Editor(DesignTypes.NumericUpDownEditor, DesignTypes.UITypeEditor)]
-        [Description("The value that offset value for Load Cell channel 5.")]
+        [Description("The value for the OffsetLoadCell5 register.")]
         public short OffsetLoadCell5 { get; set; } = 0;
 
         /// <summary>
@@ -7057,7 +7097,7 @@ namespace Harp.LoadCells
         }
 
         /// <summary>
-        /// Creates a message that offset value for Load Cell channel 5.
+        /// Creates a message for the OffsetLoadCell5 register.
         /// </summary>
         /// <param name="messageType">Specifies the type of the created message.</param>
         /// <returns>A new message for the OffsetLoadCell5 register.</returns>
@@ -7068,15 +7108,14 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Represents an operator that creates a timestamped message payload
-    /// that offset value for Load Cell channel 5.
+    /// Represents an operator that creates a timestamped message payload for the OffsetLoadCell5 register.
+    /// Offset value for Load Cell channel 5.
     /// </summary>
     [DisplayName("TimestampedOffsetLoadCell5Payload")]
-    [Description("Creates a timestamped message payload that offset value for Load Cell channel 5.")]
     public partial class CreateTimestampedOffsetLoadCell5Payload : CreateOffsetLoadCell5Payload
     {
         /// <summary>
-        /// Creates a timestamped message that offset value for Load Cell channel 5.
+        /// Creates a timestamped message for the OffsetLoadCell5 register.
         /// </summary>
         /// <param name="timestamp">The timestamp of the message payload, in seconds.</param>
         /// <param name="messageType">Specifies the type of the created message.</param>
@@ -7088,19 +7127,19 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Represents an operator that creates a message payload
-    /// that offset value for Load Cell channel 6.
+    /// Represents an operator that creates a message payload for the OffsetLoadCell6 register.
+    /// Offset value for Load Cell channel 6.
     /// </summary>
     [DisplayName("OffsetLoadCell6Payload")]
-    [Description("Creates a message payload that offset value for Load Cell channel 6.")]
+    [Description("Offset value for Load Cell channel 6.")]
     public partial class CreateOffsetLoadCell6Payload
     {
         /// <summary>
-        /// Gets or sets the value that offset value for Load Cell channel 6.
+        /// Gets or sets the value for the OffsetLoadCell6 register.
         /// </summary>
         [Range(min: -255, max: 255)]
         [Editor(DesignTypes.NumericUpDownEditor, DesignTypes.UITypeEditor)]
-        [Description("The value that offset value for Load Cell channel 6.")]
+        [Description("The value for the OffsetLoadCell6 register.")]
         public short OffsetLoadCell6 { get; set; } = 0;
 
         /// <summary>
@@ -7113,7 +7152,7 @@ namespace Harp.LoadCells
         }
 
         /// <summary>
-        /// Creates a message that offset value for Load Cell channel 6.
+        /// Creates a message for the OffsetLoadCell6 register.
         /// </summary>
         /// <param name="messageType">Specifies the type of the created message.</param>
         /// <returns>A new message for the OffsetLoadCell6 register.</returns>
@@ -7124,15 +7163,14 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Represents an operator that creates a timestamped message payload
-    /// that offset value for Load Cell channel 6.
+    /// Represents an operator that creates a timestamped message payload for the OffsetLoadCell6 register.
+    /// Offset value for Load Cell channel 6.
     /// </summary>
     [DisplayName("TimestampedOffsetLoadCell6Payload")]
-    [Description("Creates a timestamped message payload that offset value for Load Cell channel 6.")]
     public partial class CreateTimestampedOffsetLoadCell6Payload : CreateOffsetLoadCell6Payload
     {
         /// <summary>
-        /// Creates a timestamped message that offset value for Load Cell channel 6.
+        /// Creates a timestamped message for the OffsetLoadCell6 register.
         /// </summary>
         /// <param name="timestamp">The timestamp of the message payload, in seconds.</param>
         /// <param name="messageType">Specifies the type of the created message.</param>
@@ -7144,19 +7182,19 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Represents an operator that creates a message payload
-    /// that offset value for Load Cell channel 7.
+    /// Represents an operator that creates a message payload for the OffsetLoadCell7 register.
+    /// Offset value for Load Cell channel 7.
     /// </summary>
     [DisplayName("OffsetLoadCell7Payload")]
-    [Description("Creates a message payload that offset value for Load Cell channel 7.")]
+    [Description("Offset value for Load Cell channel 7.")]
     public partial class CreateOffsetLoadCell7Payload
     {
         /// <summary>
-        /// Gets or sets the value that offset value for Load Cell channel 7.
+        /// Gets or sets the value for the OffsetLoadCell7 register.
         /// </summary>
         [Range(min: -255, max: 255)]
         [Editor(DesignTypes.NumericUpDownEditor, DesignTypes.UITypeEditor)]
-        [Description("The value that offset value for Load Cell channel 7.")]
+        [Description("The value for the OffsetLoadCell7 register.")]
         public short OffsetLoadCell7 { get; set; } = 0;
 
         /// <summary>
@@ -7169,7 +7207,7 @@ namespace Harp.LoadCells
         }
 
         /// <summary>
-        /// Creates a message that offset value for Load Cell channel 7.
+        /// Creates a message for the OffsetLoadCell7 register.
         /// </summary>
         /// <param name="messageType">Specifies the type of the created message.</param>
         /// <returns>A new message for the OffsetLoadCell7 register.</returns>
@@ -7180,15 +7218,14 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Represents an operator that creates a timestamped message payload
-    /// that offset value for Load Cell channel 7.
+    /// Represents an operator that creates a timestamped message payload for the OffsetLoadCell7 register.
+    /// Offset value for Load Cell channel 7.
     /// </summary>
     [DisplayName("TimestampedOffsetLoadCell7Payload")]
-    [Description("Creates a timestamped message payload that offset value for Load Cell channel 7.")]
     public partial class CreateTimestampedOffsetLoadCell7Payload : CreateOffsetLoadCell7Payload
     {
         /// <summary>
-        /// Creates a timestamped message that offset value for Load Cell channel 7.
+        /// Creates a timestamped message for the OffsetLoadCell7 register.
         /// </summary>
         /// <param name="timestamp">The timestamp of the message payload, in seconds.</param>
         /// <param name="messageType">Specifies the type of the created message.</param>
@@ -7200,17 +7237,17 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Represents an operator that creates a message payload
-    /// that target Load Cell that will be used to trigger a threshold event on DO1 pin.
+    /// Represents an operator that creates a message payload for the DO1TargetLoadCell register.
+    /// Target Load Cell that will be used to trigger a threshold event on DO1 pin.
     /// </summary>
     [DisplayName("DO1TargetLoadCellPayload")]
-    [Description("Creates a message payload that target Load Cell that will be used to trigger a threshold event on DO1 pin.")]
+    [Description("Target Load Cell that will be used to trigger a threshold event on DO1 pin.")]
     public partial class CreateDO1TargetLoadCellPayload
     {
         /// <summary>
-        /// Gets or sets the value that target Load Cell that will be used to trigger a threshold event on DO1 pin.
+        /// Gets or sets the value for the DO1TargetLoadCell register.
         /// </summary>
-        [Description("The value that target Load Cell that will be used to trigger a threshold event on DO1 pin.")]
+        [Description("The value for the DO1TargetLoadCell register.")]
         public LoadCellChannel DO1TargetLoadCell { get; set; }
 
         /// <summary>
@@ -7223,7 +7260,7 @@ namespace Harp.LoadCells
         }
 
         /// <summary>
-        /// Creates a message that target Load Cell that will be used to trigger a threshold event on DO1 pin.
+        /// Creates a message for the DO1TargetLoadCell register.
         /// </summary>
         /// <param name="messageType">Specifies the type of the created message.</param>
         /// <returns>A new message for the DO1TargetLoadCell register.</returns>
@@ -7234,15 +7271,14 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Represents an operator that creates a timestamped message payload
-    /// that target Load Cell that will be used to trigger a threshold event on DO1 pin.
+    /// Represents an operator that creates a timestamped message payload for the DO1TargetLoadCell register.
+    /// Target Load Cell that will be used to trigger a threshold event on DO1 pin.
     /// </summary>
     [DisplayName("TimestampedDO1TargetLoadCellPayload")]
-    [Description("Creates a timestamped message payload that target Load Cell that will be used to trigger a threshold event on DO1 pin.")]
     public partial class CreateTimestampedDO1TargetLoadCellPayload : CreateDO1TargetLoadCellPayload
     {
         /// <summary>
-        /// Creates a timestamped message that target Load Cell that will be used to trigger a threshold event on DO1 pin.
+        /// Creates a timestamped message for the DO1TargetLoadCell register.
         /// </summary>
         /// <param name="timestamp">The timestamp of the message payload, in seconds.</param>
         /// <param name="messageType">Specifies the type of the created message.</param>
@@ -7254,17 +7290,17 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Represents an operator that creates a message payload
-    /// that target Load Cell that will be used to trigger a threshold event on DO2 pin.
+    /// Represents an operator that creates a message payload for the DO2TargetLoadCell register.
+    /// Target Load Cell that will be used to trigger a threshold event on DO2 pin.
     /// </summary>
     [DisplayName("DO2TargetLoadCellPayload")]
-    [Description("Creates a message payload that target Load Cell that will be used to trigger a threshold event on DO2 pin.")]
+    [Description("Target Load Cell that will be used to trigger a threshold event on DO2 pin.")]
     public partial class CreateDO2TargetLoadCellPayload
     {
         /// <summary>
-        /// Gets or sets the value that target Load Cell that will be used to trigger a threshold event on DO2 pin.
+        /// Gets or sets the value for the DO2TargetLoadCell register.
         /// </summary>
-        [Description("The value that target Load Cell that will be used to trigger a threshold event on DO2 pin.")]
+        [Description("The value for the DO2TargetLoadCell register.")]
         public LoadCellChannel DO2TargetLoadCell { get; set; }
 
         /// <summary>
@@ -7277,7 +7313,7 @@ namespace Harp.LoadCells
         }
 
         /// <summary>
-        /// Creates a message that target Load Cell that will be used to trigger a threshold event on DO2 pin.
+        /// Creates a message for the DO2TargetLoadCell register.
         /// </summary>
         /// <param name="messageType">Specifies the type of the created message.</param>
         /// <returns>A new message for the DO2TargetLoadCell register.</returns>
@@ -7288,15 +7324,14 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Represents an operator that creates a timestamped message payload
-    /// that target Load Cell that will be used to trigger a threshold event on DO2 pin.
+    /// Represents an operator that creates a timestamped message payload for the DO2TargetLoadCell register.
+    /// Target Load Cell that will be used to trigger a threshold event on DO2 pin.
     /// </summary>
     [DisplayName("TimestampedDO2TargetLoadCellPayload")]
-    [Description("Creates a timestamped message payload that target Load Cell that will be used to trigger a threshold event on DO2 pin.")]
     public partial class CreateTimestampedDO2TargetLoadCellPayload : CreateDO2TargetLoadCellPayload
     {
         /// <summary>
-        /// Creates a timestamped message that target Load Cell that will be used to trigger a threshold event on DO2 pin.
+        /// Creates a timestamped message for the DO2TargetLoadCell register.
         /// </summary>
         /// <param name="timestamp">The timestamp of the message payload, in seconds.</param>
         /// <param name="messageType">Specifies the type of the created message.</param>
@@ -7308,17 +7343,17 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Represents an operator that creates a message payload
-    /// that target Load Cell that will be used to trigger a threshold event on DO3 pin.
+    /// Represents an operator that creates a message payload for the DO3TargetLoadCell register.
+    /// Target Load Cell that will be used to trigger a threshold event on DO3 pin.
     /// </summary>
     [DisplayName("DO3TargetLoadCellPayload")]
-    [Description("Creates a message payload that target Load Cell that will be used to trigger a threshold event on DO3 pin.")]
+    [Description("Target Load Cell that will be used to trigger a threshold event on DO3 pin.")]
     public partial class CreateDO3TargetLoadCellPayload
     {
         /// <summary>
-        /// Gets or sets the value that target Load Cell that will be used to trigger a threshold event on DO3 pin.
+        /// Gets or sets the value for the DO3TargetLoadCell register.
         /// </summary>
-        [Description("The value that target Load Cell that will be used to trigger a threshold event on DO3 pin.")]
+        [Description("The value for the DO3TargetLoadCell register.")]
         public LoadCellChannel DO3TargetLoadCell { get; set; }
 
         /// <summary>
@@ -7331,7 +7366,7 @@ namespace Harp.LoadCells
         }
 
         /// <summary>
-        /// Creates a message that target Load Cell that will be used to trigger a threshold event on DO3 pin.
+        /// Creates a message for the DO3TargetLoadCell register.
         /// </summary>
         /// <param name="messageType">Specifies the type of the created message.</param>
         /// <returns>A new message for the DO3TargetLoadCell register.</returns>
@@ -7342,15 +7377,14 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Represents an operator that creates a timestamped message payload
-    /// that target Load Cell that will be used to trigger a threshold event on DO3 pin.
+    /// Represents an operator that creates a timestamped message payload for the DO3TargetLoadCell register.
+    /// Target Load Cell that will be used to trigger a threshold event on DO3 pin.
     /// </summary>
     [DisplayName("TimestampedDO3TargetLoadCellPayload")]
-    [Description("Creates a timestamped message payload that target Load Cell that will be used to trigger a threshold event on DO3 pin.")]
     public partial class CreateTimestampedDO3TargetLoadCellPayload : CreateDO3TargetLoadCellPayload
     {
         /// <summary>
-        /// Creates a timestamped message that target Load Cell that will be used to trigger a threshold event on DO3 pin.
+        /// Creates a timestamped message for the DO3TargetLoadCell register.
         /// </summary>
         /// <param name="timestamp">The timestamp of the message payload, in seconds.</param>
         /// <param name="messageType">Specifies the type of the created message.</param>
@@ -7362,17 +7396,17 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Represents an operator that creates a message payload
-    /// that target Load Cell that will be used to trigger a threshold event on DO4 pin.
+    /// Represents an operator that creates a message payload for the DO4TargetLoadCell register.
+    /// Target Load Cell that will be used to trigger a threshold event on DO4 pin.
     /// </summary>
     [DisplayName("DO4TargetLoadCellPayload")]
-    [Description("Creates a message payload that target Load Cell that will be used to trigger a threshold event on DO4 pin.")]
+    [Description("Target Load Cell that will be used to trigger a threshold event on DO4 pin.")]
     public partial class CreateDO4TargetLoadCellPayload
     {
         /// <summary>
-        /// Gets or sets the value that target Load Cell that will be used to trigger a threshold event on DO4 pin.
+        /// Gets or sets the value for the DO4TargetLoadCell register.
         /// </summary>
-        [Description("The value that target Load Cell that will be used to trigger a threshold event on DO4 pin.")]
+        [Description("The value for the DO4TargetLoadCell register.")]
         public LoadCellChannel DO4TargetLoadCell { get; set; }
 
         /// <summary>
@@ -7385,7 +7419,7 @@ namespace Harp.LoadCells
         }
 
         /// <summary>
-        /// Creates a message that target Load Cell that will be used to trigger a threshold event on DO4 pin.
+        /// Creates a message for the DO4TargetLoadCell register.
         /// </summary>
         /// <param name="messageType">Specifies the type of the created message.</param>
         /// <returns>A new message for the DO4TargetLoadCell register.</returns>
@@ -7396,15 +7430,14 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Represents an operator that creates a timestamped message payload
-    /// that target Load Cell that will be used to trigger a threshold event on DO4 pin.
+    /// Represents an operator that creates a timestamped message payload for the DO4TargetLoadCell register.
+    /// Target Load Cell that will be used to trigger a threshold event on DO4 pin.
     /// </summary>
     [DisplayName("TimestampedDO4TargetLoadCellPayload")]
-    [Description("Creates a timestamped message payload that target Load Cell that will be used to trigger a threshold event on DO4 pin.")]
     public partial class CreateTimestampedDO4TargetLoadCellPayload : CreateDO4TargetLoadCellPayload
     {
         /// <summary>
-        /// Creates a timestamped message that target Load Cell that will be used to trigger a threshold event on DO4 pin.
+        /// Creates a timestamped message for the DO4TargetLoadCell register.
         /// </summary>
         /// <param name="timestamp">The timestamp of the message payload, in seconds.</param>
         /// <param name="messageType">Specifies the type of the created message.</param>
@@ -7416,17 +7449,17 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Represents an operator that creates a message payload
-    /// that target Load Cell that will be used to trigger a threshold event on DO5 pin.
+    /// Represents an operator that creates a message payload for the DO5TargetLoadCell register.
+    /// Target Load Cell that will be used to trigger a threshold event on DO5 pin.
     /// </summary>
     [DisplayName("DO5TargetLoadCellPayload")]
-    [Description("Creates a message payload that target Load Cell that will be used to trigger a threshold event on DO5 pin.")]
+    [Description("Target Load Cell that will be used to trigger a threshold event on DO5 pin.")]
     public partial class CreateDO5TargetLoadCellPayload
     {
         /// <summary>
-        /// Gets or sets the value that target Load Cell that will be used to trigger a threshold event on DO5 pin.
+        /// Gets or sets the value for the DO5TargetLoadCell register.
         /// </summary>
-        [Description("The value that target Load Cell that will be used to trigger a threshold event on DO5 pin.")]
+        [Description("The value for the DO5TargetLoadCell register.")]
         public LoadCellChannel DO5TargetLoadCell { get; set; }
 
         /// <summary>
@@ -7439,7 +7472,7 @@ namespace Harp.LoadCells
         }
 
         /// <summary>
-        /// Creates a message that target Load Cell that will be used to trigger a threshold event on DO5 pin.
+        /// Creates a message for the DO5TargetLoadCell register.
         /// </summary>
         /// <param name="messageType">Specifies the type of the created message.</param>
         /// <returns>A new message for the DO5TargetLoadCell register.</returns>
@@ -7450,15 +7483,14 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Represents an operator that creates a timestamped message payload
-    /// that target Load Cell that will be used to trigger a threshold event on DO5 pin.
+    /// Represents an operator that creates a timestamped message payload for the DO5TargetLoadCell register.
+    /// Target Load Cell that will be used to trigger a threshold event on DO5 pin.
     /// </summary>
     [DisplayName("TimestampedDO5TargetLoadCellPayload")]
-    [Description("Creates a timestamped message payload that target Load Cell that will be used to trigger a threshold event on DO5 pin.")]
     public partial class CreateTimestampedDO5TargetLoadCellPayload : CreateDO5TargetLoadCellPayload
     {
         /// <summary>
-        /// Creates a timestamped message that target Load Cell that will be used to trigger a threshold event on DO5 pin.
+        /// Creates a timestamped message for the DO5TargetLoadCell register.
         /// </summary>
         /// <param name="timestamp">The timestamp of the message payload, in seconds.</param>
         /// <param name="messageType">Specifies the type of the created message.</param>
@@ -7470,17 +7502,17 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Represents an operator that creates a message payload
-    /// that target Load Cell that will be used to trigger a threshold event on DO6 pin.
+    /// Represents an operator that creates a message payload for the DO6TargetLoadCell register.
+    /// Target Load Cell that will be used to trigger a threshold event on DO6 pin.
     /// </summary>
     [DisplayName("DO6TargetLoadCellPayload")]
-    [Description("Creates a message payload that target Load Cell that will be used to trigger a threshold event on DO6 pin.")]
+    [Description("Target Load Cell that will be used to trigger a threshold event on DO6 pin.")]
     public partial class CreateDO6TargetLoadCellPayload
     {
         /// <summary>
-        /// Gets or sets the value that target Load Cell that will be used to trigger a threshold event on DO6 pin.
+        /// Gets or sets the value for the DO6TargetLoadCell register.
         /// </summary>
-        [Description("The value that target Load Cell that will be used to trigger a threshold event on DO6 pin.")]
+        [Description("The value for the DO6TargetLoadCell register.")]
         public LoadCellChannel DO6TargetLoadCell { get; set; }
 
         /// <summary>
@@ -7493,7 +7525,7 @@ namespace Harp.LoadCells
         }
 
         /// <summary>
-        /// Creates a message that target Load Cell that will be used to trigger a threshold event on DO6 pin.
+        /// Creates a message for the DO6TargetLoadCell register.
         /// </summary>
         /// <param name="messageType">Specifies the type of the created message.</param>
         /// <returns>A new message for the DO6TargetLoadCell register.</returns>
@@ -7504,15 +7536,14 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Represents an operator that creates a timestamped message payload
-    /// that target Load Cell that will be used to trigger a threshold event on DO6 pin.
+    /// Represents an operator that creates a timestamped message payload for the DO6TargetLoadCell register.
+    /// Target Load Cell that will be used to trigger a threshold event on DO6 pin.
     /// </summary>
     [DisplayName("TimestampedDO6TargetLoadCellPayload")]
-    [Description("Creates a timestamped message payload that target Load Cell that will be used to trigger a threshold event on DO6 pin.")]
     public partial class CreateTimestampedDO6TargetLoadCellPayload : CreateDO6TargetLoadCellPayload
     {
         /// <summary>
-        /// Creates a timestamped message that target Load Cell that will be used to trigger a threshold event on DO6 pin.
+        /// Creates a timestamped message for the DO6TargetLoadCell register.
         /// </summary>
         /// <param name="timestamp">The timestamp of the message payload, in seconds.</param>
         /// <param name="messageType">Specifies the type of the created message.</param>
@@ -7524,17 +7555,17 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Represents an operator that creates a message payload
-    /// that target Load Cell that will be used to trigger a threshold event on DO7 pin.
+    /// Represents an operator that creates a message payload for the DO7TargetLoadCell register.
+    /// Target Load Cell that will be used to trigger a threshold event on DO7 pin.
     /// </summary>
     [DisplayName("DO7TargetLoadCellPayload")]
-    [Description("Creates a message payload that target Load Cell that will be used to trigger a threshold event on DO7 pin.")]
+    [Description("Target Load Cell that will be used to trigger a threshold event on DO7 pin.")]
     public partial class CreateDO7TargetLoadCellPayload
     {
         /// <summary>
-        /// Gets or sets the value that target Load Cell that will be used to trigger a threshold event on DO7 pin.
+        /// Gets or sets the value for the DO7TargetLoadCell register.
         /// </summary>
-        [Description("The value that target Load Cell that will be used to trigger a threshold event on DO7 pin.")]
+        [Description("The value for the DO7TargetLoadCell register.")]
         public LoadCellChannel DO7TargetLoadCell { get; set; }
 
         /// <summary>
@@ -7547,7 +7578,7 @@ namespace Harp.LoadCells
         }
 
         /// <summary>
-        /// Creates a message that target Load Cell that will be used to trigger a threshold event on DO7 pin.
+        /// Creates a message for the DO7TargetLoadCell register.
         /// </summary>
         /// <param name="messageType">Specifies the type of the created message.</param>
         /// <returns>A new message for the DO7TargetLoadCell register.</returns>
@@ -7558,15 +7589,14 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Represents an operator that creates a timestamped message payload
-    /// that target Load Cell that will be used to trigger a threshold event on DO7 pin.
+    /// Represents an operator that creates a timestamped message payload for the DO7TargetLoadCell register.
+    /// Target Load Cell that will be used to trigger a threshold event on DO7 pin.
     /// </summary>
     [DisplayName("TimestampedDO7TargetLoadCellPayload")]
-    [Description("Creates a timestamped message payload that target Load Cell that will be used to trigger a threshold event on DO7 pin.")]
     public partial class CreateTimestampedDO7TargetLoadCellPayload : CreateDO7TargetLoadCellPayload
     {
         /// <summary>
-        /// Creates a timestamped message that target Load Cell that will be used to trigger a threshold event on DO7 pin.
+        /// Creates a timestamped message for the DO7TargetLoadCell register.
         /// </summary>
         /// <param name="timestamp">The timestamp of the message payload, in seconds.</param>
         /// <param name="messageType">Specifies the type of the created message.</param>
@@ -7578,17 +7608,17 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Represents an operator that creates a message payload
-    /// that target Load Cell that will be used to trigger a threshold event on DO8 pin.
+    /// Represents an operator that creates a message payload for the DO8TargetLoadCell register.
+    /// Target Load Cell that will be used to trigger a threshold event on DO8 pin.
     /// </summary>
     [DisplayName("DO8TargetLoadCellPayload")]
-    [Description("Creates a message payload that target Load Cell that will be used to trigger a threshold event on DO8 pin.")]
+    [Description("Target Load Cell that will be used to trigger a threshold event on DO8 pin.")]
     public partial class CreateDO8TargetLoadCellPayload
     {
         /// <summary>
-        /// Gets or sets the value that target Load Cell that will be used to trigger a threshold event on DO8 pin.
+        /// Gets or sets the value for the DO8TargetLoadCell register.
         /// </summary>
-        [Description("The value that target Load Cell that will be used to trigger a threshold event on DO8 pin.")]
+        [Description("The value for the DO8TargetLoadCell register.")]
         public LoadCellChannel DO8TargetLoadCell { get; set; }
 
         /// <summary>
@@ -7601,7 +7631,7 @@ namespace Harp.LoadCells
         }
 
         /// <summary>
-        /// Creates a message that target Load Cell that will be used to trigger a threshold event on DO8 pin.
+        /// Creates a message for the DO8TargetLoadCell register.
         /// </summary>
         /// <param name="messageType">Specifies the type of the created message.</param>
         /// <returns>A new message for the DO8TargetLoadCell register.</returns>
@@ -7612,15 +7642,14 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Represents an operator that creates a timestamped message payload
-    /// that target Load Cell that will be used to trigger a threshold event on DO8 pin.
+    /// Represents an operator that creates a timestamped message payload for the DO8TargetLoadCell register.
+    /// Target Load Cell that will be used to trigger a threshold event on DO8 pin.
     /// </summary>
     [DisplayName("TimestampedDO8TargetLoadCellPayload")]
-    [Description("Creates a timestamped message payload that target Load Cell that will be used to trigger a threshold event on DO8 pin.")]
     public partial class CreateTimestampedDO8TargetLoadCellPayload : CreateDO8TargetLoadCellPayload
     {
         /// <summary>
-        /// Creates a timestamped message that target Load Cell that will be used to trigger a threshold event on DO8 pin.
+        /// Creates a timestamped message for the DO8TargetLoadCell register.
         /// </summary>
         /// <param name="timestamp">The timestamp of the message payload, in seconds.</param>
         /// <param name="messageType">Specifies the type of the created message.</param>
@@ -7632,17 +7661,17 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Represents an operator that creates a message payload
-    /// that value used to threshold a Load Cell read, and trigger DO1 pin.
+    /// Represents an operator that creates a message payload for the DO1Threshold register.
+    /// Value used to threshold a Load Cell read, and trigger DO1 pin.
     /// </summary>
     [DisplayName("DO1ThresholdPayload")]
-    [Description("Creates a message payload that value used to threshold a Load Cell read, and trigger DO1 pin.")]
+    [Description("Value used to threshold a Load Cell read, and trigger DO1 pin.")]
     public partial class CreateDO1ThresholdPayload
     {
         /// <summary>
-        /// Gets or sets the value that value used to threshold a Load Cell read, and trigger DO1 pin.
+        /// Gets or sets the value for the DO1Threshold register.
         /// </summary>
-        [Description("The value that value used to threshold a Load Cell read, and trigger DO1 pin.")]
+        [Description("The value for the DO1Threshold register.")]
         public short DO1Threshold { get; set; }
 
         /// <summary>
@@ -7655,7 +7684,7 @@ namespace Harp.LoadCells
         }
 
         /// <summary>
-        /// Creates a message that value used to threshold a Load Cell read, and trigger DO1 pin.
+        /// Creates a message for the DO1Threshold register.
         /// </summary>
         /// <param name="messageType">Specifies the type of the created message.</param>
         /// <returns>A new message for the DO1Threshold register.</returns>
@@ -7666,15 +7695,14 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Represents an operator that creates a timestamped message payload
-    /// that value used to threshold a Load Cell read, and trigger DO1 pin.
+    /// Represents an operator that creates a timestamped message payload for the DO1Threshold register.
+    /// Value used to threshold a Load Cell read, and trigger DO1 pin.
     /// </summary>
     [DisplayName("TimestampedDO1ThresholdPayload")]
-    [Description("Creates a timestamped message payload that value used to threshold a Load Cell read, and trigger DO1 pin.")]
     public partial class CreateTimestampedDO1ThresholdPayload : CreateDO1ThresholdPayload
     {
         /// <summary>
-        /// Creates a timestamped message that value used to threshold a Load Cell read, and trigger DO1 pin.
+        /// Creates a timestamped message for the DO1Threshold register.
         /// </summary>
         /// <param name="timestamp">The timestamp of the message payload, in seconds.</param>
         /// <param name="messageType">Specifies the type of the created message.</param>
@@ -7686,17 +7714,17 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Represents an operator that creates a message payload
-    /// that value used to threshold a Load Cell read, and trigger DO2 pin.
+    /// Represents an operator that creates a message payload for the DO2Threshold register.
+    /// Value used to threshold a Load Cell read, and trigger DO2 pin.
     /// </summary>
     [DisplayName("DO2ThresholdPayload")]
-    [Description("Creates a message payload that value used to threshold a Load Cell read, and trigger DO2 pin.")]
+    [Description("Value used to threshold a Load Cell read, and trigger DO2 pin.")]
     public partial class CreateDO2ThresholdPayload
     {
         /// <summary>
-        /// Gets or sets the value that value used to threshold a Load Cell read, and trigger DO2 pin.
+        /// Gets or sets the value for the DO2Threshold register.
         /// </summary>
-        [Description("The value that value used to threshold a Load Cell read, and trigger DO2 pin.")]
+        [Description("The value for the DO2Threshold register.")]
         public short DO2Threshold { get; set; }
 
         /// <summary>
@@ -7709,7 +7737,7 @@ namespace Harp.LoadCells
         }
 
         /// <summary>
-        /// Creates a message that value used to threshold a Load Cell read, and trigger DO2 pin.
+        /// Creates a message for the DO2Threshold register.
         /// </summary>
         /// <param name="messageType">Specifies the type of the created message.</param>
         /// <returns>A new message for the DO2Threshold register.</returns>
@@ -7720,15 +7748,14 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Represents an operator that creates a timestamped message payload
-    /// that value used to threshold a Load Cell read, and trigger DO2 pin.
+    /// Represents an operator that creates a timestamped message payload for the DO2Threshold register.
+    /// Value used to threshold a Load Cell read, and trigger DO2 pin.
     /// </summary>
     [DisplayName("TimestampedDO2ThresholdPayload")]
-    [Description("Creates a timestamped message payload that value used to threshold a Load Cell read, and trigger DO2 pin.")]
     public partial class CreateTimestampedDO2ThresholdPayload : CreateDO2ThresholdPayload
     {
         /// <summary>
-        /// Creates a timestamped message that value used to threshold a Load Cell read, and trigger DO2 pin.
+        /// Creates a timestamped message for the DO2Threshold register.
         /// </summary>
         /// <param name="timestamp">The timestamp of the message payload, in seconds.</param>
         /// <param name="messageType">Specifies the type of the created message.</param>
@@ -7740,17 +7767,17 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Represents an operator that creates a message payload
-    /// that value used to threshold a Load Cell read, and trigger DO3 pin.
+    /// Represents an operator that creates a message payload for the DO3Threshold register.
+    /// Value used to threshold a Load Cell read, and trigger DO3 pin.
     /// </summary>
     [DisplayName("DO3ThresholdPayload")]
-    [Description("Creates a message payload that value used to threshold a Load Cell read, and trigger DO3 pin.")]
+    [Description("Value used to threshold a Load Cell read, and trigger DO3 pin.")]
     public partial class CreateDO3ThresholdPayload
     {
         /// <summary>
-        /// Gets or sets the value that value used to threshold a Load Cell read, and trigger DO3 pin.
+        /// Gets or sets the value for the DO3Threshold register.
         /// </summary>
-        [Description("The value that value used to threshold a Load Cell read, and trigger DO3 pin.")]
+        [Description("The value for the DO3Threshold register.")]
         public short DO3Threshold { get; set; }
 
         /// <summary>
@@ -7763,7 +7790,7 @@ namespace Harp.LoadCells
         }
 
         /// <summary>
-        /// Creates a message that value used to threshold a Load Cell read, and trigger DO3 pin.
+        /// Creates a message for the DO3Threshold register.
         /// </summary>
         /// <param name="messageType">Specifies the type of the created message.</param>
         /// <returns>A new message for the DO3Threshold register.</returns>
@@ -7774,15 +7801,14 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Represents an operator that creates a timestamped message payload
-    /// that value used to threshold a Load Cell read, and trigger DO3 pin.
+    /// Represents an operator that creates a timestamped message payload for the DO3Threshold register.
+    /// Value used to threshold a Load Cell read, and trigger DO3 pin.
     /// </summary>
     [DisplayName("TimestampedDO3ThresholdPayload")]
-    [Description("Creates a timestamped message payload that value used to threshold a Load Cell read, and trigger DO3 pin.")]
     public partial class CreateTimestampedDO3ThresholdPayload : CreateDO3ThresholdPayload
     {
         /// <summary>
-        /// Creates a timestamped message that value used to threshold a Load Cell read, and trigger DO3 pin.
+        /// Creates a timestamped message for the DO3Threshold register.
         /// </summary>
         /// <param name="timestamp">The timestamp of the message payload, in seconds.</param>
         /// <param name="messageType">Specifies the type of the created message.</param>
@@ -7794,17 +7820,17 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Represents an operator that creates a message payload
-    /// that value used to threshold a Load Cell read, and trigger DO4 pin.
+    /// Represents an operator that creates a message payload for the DO4Threshold register.
+    /// Value used to threshold a Load Cell read, and trigger DO4 pin.
     /// </summary>
     [DisplayName("DO4ThresholdPayload")]
-    [Description("Creates a message payload that value used to threshold a Load Cell read, and trigger DO4 pin.")]
+    [Description("Value used to threshold a Load Cell read, and trigger DO4 pin.")]
     public partial class CreateDO4ThresholdPayload
     {
         /// <summary>
-        /// Gets or sets the value that value used to threshold a Load Cell read, and trigger DO4 pin.
+        /// Gets or sets the value for the DO4Threshold register.
         /// </summary>
-        [Description("The value that value used to threshold a Load Cell read, and trigger DO4 pin.")]
+        [Description("The value for the DO4Threshold register.")]
         public short DO4Threshold { get; set; }
 
         /// <summary>
@@ -7817,7 +7843,7 @@ namespace Harp.LoadCells
         }
 
         /// <summary>
-        /// Creates a message that value used to threshold a Load Cell read, and trigger DO4 pin.
+        /// Creates a message for the DO4Threshold register.
         /// </summary>
         /// <param name="messageType">Specifies the type of the created message.</param>
         /// <returns>A new message for the DO4Threshold register.</returns>
@@ -7828,15 +7854,14 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Represents an operator that creates a timestamped message payload
-    /// that value used to threshold a Load Cell read, and trigger DO4 pin.
+    /// Represents an operator that creates a timestamped message payload for the DO4Threshold register.
+    /// Value used to threshold a Load Cell read, and trigger DO4 pin.
     /// </summary>
     [DisplayName("TimestampedDO4ThresholdPayload")]
-    [Description("Creates a timestamped message payload that value used to threshold a Load Cell read, and trigger DO4 pin.")]
     public partial class CreateTimestampedDO4ThresholdPayload : CreateDO4ThresholdPayload
     {
         /// <summary>
-        /// Creates a timestamped message that value used to threshold a Load Cell read, and trigger DO4 pin.
+        /// Creates a timestamped message for the DO4Threshold register.
         /// </summary>
         /// <param name="timestamp">The timestamp of the message payload, in seconds.</param>
         /// <param name="messageType">Specifies the type of the created message.</param>
@@ -7848,17 +7873,17 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Represents an operator that creates a message payload
-    /// that value used to threshold a Load Cell read, and trigger DO5 pin.
+    /// Represents an operator that creates a message payload for the DO5Threshold register.
+    /// Value used to threshold a Load Cell read, and trigger DO5 pin.
     /// </summary>
     [DisplayName("DO5ThresholdPayload")]
-    [Description("Creates a message payload that value used to threshold a Load Cell read, and trigger DO5 pin.")]
+    [Description("Value used to threshold a Load Cell read, and trigger DO5 pin.")]
     public partial class CreateDO5ThresholdPayload
     {
         /// <summary>
-        /// Gets or sets the value that value used to threshold a Load Cell read, and trigger DO5 pin.
+        /// Gets or sets the value for the DO5Threshold register.
         /// </summary>
-        [Description("The value that value used to threshold a Load Cell read, and trigger DO5 pin.")]
+        [Description("The value for the DO5Threshold register.")]
         public short DO5Threshold { get; set; }
 
         /// <summary>
@@ -7871,7 +7896,7 @@ namespace Harp.LoadCells
         }
 
         /// <summary>
-        /// Creates a message that value used to threshold a Load Cell read, and trigger DO5 pin.
+        /// Creates a message for the DO5Threshold register.
         /// </summary>
         /// <param name="messageType">Specifies the type of the created message.</param>
         /// <returns>A new message for the DO5Threshold register.</returns>
@@ -7882,15 +7907,14 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Represents an operator that creates a timestamped message payload
-    /// that value used to threshold a Load Cell read, and trigger DO5 pin.
+    /// Represents an operator that creates a timestamped message payload for the DO5Threshold register.
+    /// Value used to threshold a Load Cell read, and trigger DO5 pin.
     /// </summary>
     [DisplayName("TimestampedDO5ThresholdPayload")]
-    [Description("Creates a timestamped message payload that value used to threshold a Load Cell read, and trigger DO5 pin.")]
     public partial class CreateTimestampedDO5ThresholdPayload : CreateDO5ThresholdPayload
     {
         /// <summary>
-        /// Creates a timestamped message that value used to threshold a Load Cell read, and trigger DO5 pin.
+        /// Creates a timestamped message for the DO5Threshold register.
         /// </summary>
         /// <param name="timestamp">The timestamp of the message payload, in seconds.</param>
         /// <param name="messageType">Specifies the type of the created message.</param>
@@ -7902,17 +7926,17 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Represents an operator that creates a message payload
-    /// that value used to threshold a Load Cell read, and trigger DO6 pin.
+    /// Represents an operator that creates a message payload for the DO6Threshold register.
+    /// Value used to threshold a Load Cell read, and trigger DO6 pin.
     /// </summary>
     [DisplayName("DO6ThresholdPayload")]
-    [Description("Creates a message payload that value used to threshold a Load Cell read, and trigger DO6 pin.")]
+    [Description("Value used to threshold a Load Cell read, and trigger DO6 pin.")]
     public partial class CreateDO6ThresholdPayload
     {
         /// <summary>
-        /// Gets or sets the value that value used to threshold a Load Cell read, and trigger DO6 pin.
+        /// Gets or sets the value for the DO6Threshold register.
         /// </summary>
-        [Description("The value that value used to threshold a Load Cell read, and trigger DO6 pin.")]
+        [Description("The value for the DO6Threshold register.")]
         public short DO6Threshold { get; set; }
 
         /// <summary>
@@ -7925,7 +7949,7 @@ namespace Harp.LoadCells
         }
 
         /// <summary>
-        /// Creates a message that value used to threshold a Load Cell read, and trigger DO6 pin.
+        /// Creates a message for the DO6Threshold register.
         /// </summary>
         /// <param name="messageType">Specifies the type of the created message.</param>
         /// <returns>A new message for the DO6Threshold register.</returns>
@@ -7936,15 +7960,14 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Represents an operator that creates a timestamped message payload
-    /// that value used to threshold a Load Cell read, and trigger DO6 pin.
+    /// Represents an operator that creates a timestamped message payload for the DO6Threshold register.
+    /// Value used to threshold a Load Cell read, and trigger DO6 pin.
     /// </summary>
     [DisplayName("TimestampedDO6ThresholdPayload")]
-    [Description("Creates a timestamped message payload that value used to threshold a Load Cell read, and trigger DO6 pin.")]
     public partial class CreateTimestampedDO6ThresholdPayload : CreateDO6ThresholdPayload
     {
         /// <summary>
-        /// Creates a timestamped message that value used to threshold a Load Cell read, and trigger DO6 pin.
+        /// Creates a timestamped message for the DO6Threshold register.
         /// </summary>
         /// <param name="timestamp">The timestamp of the message payload, in seconds.</param>
         /// <param name="messageType">Specifies the type of the created message.</param>
@@ -7956,17 +7979,17 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Represents an operator that creates a message payload
-    /// that value used to threshold a Load Cell read, and trigger DO7 pin.
+    /// Represents an operator that creates a message payload for the DO7Threshold register.
+    /// Value used to threshold a Load Cell read, and trigger DO7 pin.
     /// </summary>
     [DisplayName("DO7ThresholdPayload")]
-    [Description("Creates a message payload that value used to threshold a Load Cell read, and trigger DO7 pin.")]
+    [Description("Value used to threshold a Load Cell read, and trigger DO7 pin.")]
     public partial class CreateDO7ThresholdPayload
     {
         /// <summary>
-        /// Gets or sets the value that value used to threshold a Load Cell read, and trigger DO7 pin.
+        /// Gets or sets the value for the DO7Threshold register.
         /// </summary>
-        [Description("The value that value used to threshold a Load Cell read, and trigger DO7 pin.")]
+        [Description("The value for the DO7Threshold register.")]
         public short DO7Threshold { get; set; }
 
         /// <summary>
@@ -7979,7 +8002,7 @@ namespace Harp.LoadCells
         }
 
         /// <summary>
-        /// Creates a message that value used to threshold a Load Cell read, and trigger DO7 pin.
+        /// Creates a message for the DO7Threshold register.
         /// </summary>
         /// <param name="messageType">Specifies the type of the created message.</param>
         /// <returns>A new message for the DO7Threshold register.</returns>
@@ -7990,15 +8013,14 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Represents an operator that creates a timestamped message payload
-    /// that value used to threshold a Load Cell read, and trigger DO7 pin.
+    /// Represents an operator that creates a timestamped message payload for the DO7Threshold register.
+    /// Value used to threshold a Load Cell read, and trigger DO7 pin.
     /// </summary>
     [DisplayName("TimestampedDO7ThresholdPayload")]
-    [Description("Creates a timestamped message payload that value used to threshold a Load Cell read, and trigger DO7 pin.")]
     public partial class CreateTimestampedDO7ThresholdPayload : CreateDO7ThresholdPayload
     {
         /// <summary>
-        /// Creates a timestamped message that value used to threshold a Load Cell read, and trigger DO7 pin.
+        /// Creates a timestamped message for the DO7Threshold register.
         /// </summary>
         /// <param name="timestamp">The timestamp of the message payload, in seconds.</param>
         /// <param name="messageType">Specifies the type of the created message.</param>
@@ -8010,17 +8032,17 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Represents an operator that creates a message payload
-    /// that value used to threshold a Load Cell read, and trigger DO8 pin.
+    /// Represents an operator that creates a message payload for the DO8Threshold register.
+    /// Value used to threshold a Load Cell read, and trigger DO8 pin.
     /// </summary>
     [DisplayName("DO8ThresholdPayload")]
-    [Description("Creates a message payload that value used to threshold a Load Cell read, and trigger DO8 pin.")]
+    [Description("Value used to threshold a Load Cell read, and trigger DO8 pin.")]
     public partial class CreateDO8ThresholdPayload
     {
         /// <summary>
-        /// Gets or sets the value that value used to threshold a Load Cell read, and trigger DO8 pin.
+        /// Gets or sets the value for the DO8Threshold register.
         /// </summary>
-        [Description("The value that value used to threshold a Load Cell read, and trigger DO8 pin.")]
+        [Description("The value for the DO8Threshold register.")]
         public short DO8Threshold { get; set; }
 
         /// <summary>
@@ -8033,7 +8055,7 @@ namespace Harp.LoadCells
         }
 
         /// <summary>
-        /// Creates a message that value used to threshold a Load Cell read, and trigger DO8 pin.
+        /// Creates a message for the DO8Threshold register.
         /// </summary>
         /// <param name="messageType">Specifies the type of the created message.</param>
         /// <returns>A new message for the DO8Threshold register.</returns>
@@ -8044,15 +8066,14 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Represents an operator that creates a timestamped message payload
-    /// that value used to threshold a Load Cell read, and trigger DO8 pin.
+    /// Represents an operator that creates a timestamped message payload for the DO8Threshold register.
+    /// Value used to threshold a Load Cell read, and trigger DO8 pin.
     /// </summary>
     [DisplayName("TimestampedDO8ThresholdPayload")]
-    [Description("Creates a timestamped message payload that value used to threshold a Load Cell read, and trigger DO8 pin.")]
     public partial class CreateTimestampedDO8ThresholdPayload : CreateDO8ThresholdPayload
     {
         /// <summary>
-        /// Creates a timestamped message that value used to threshold a Load Cell read, and trigger DO8 pin.
+        /// Creates a timestamped message for the DO8Threshold register.
         /// </summary>
         /// <param name="timestamp">The timestamp of the message payload, in seconds.</param>
         /// <param name="messageType">Specifies the type of the created message.</param>
@@ -8064,17 +8085,17 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Represents an operator that creates a message payload
-    /// that time (ms) above threshold value that is required to trigger a DO1 pin event.
+    /// Represents an operator that creates a message payload for the DO1TimeAboveThreshold register.
+    /// Time (ms) above threshold value that is required to trigger a DO1 pin event.
     /// </summary>
     [DisplayName("DO1TimeAboveThresholdPayload")]
-    [Description("Creates a message payload that time (ms) above threshold value that is required to trigger a DO1 pin event.")]
+    [Description("Time (ms) above threshold value that is required to trigger a DO1 pin event.")]
     public partial class CreateDO1TimeAboveThresholdPayload
     {
         /// <summary>
-        /// Gets or sets the value that time (ms) above threshold value that is required to trigger a DO1 pin event.
+        /// Gets or sets the value for the DO1TimeAboveThreshold register.
         /// </summary>
-        [Description("The value that time (ms) above threshold value that is required to trigger a DO1 pin event.")]
+        [Description("The value for the DO1TimeAboveThreshold register.")]
         public ushort DO1TimeAboveThreshold { get; set; } = 0;
 
         /// <summary>
@@ -8087,7 +8108,7 @@ namespace Harp.LoadCells
         }
 
         /// <summary>
-        /// Creates a message that time (ms) above threshold value that is required to trigger a DO1 pin event.
+        /// Creates a message for the DO1TimeAboveThreshold register.
         /// </summary>
         /// <param name="messageType">Specifies the type of the created message.</param>
         /// <returns>A new message for the DO1TimeAboveThreshold register.</returns>
@@ -8098,15 +8119,14 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Represents an operator that creates a timestamped message payload
-    /// that time (ms) above threshold value that is required to trigger a DO1 pin event.
+    /// Represents an operator that creates a timestamped message payload for the DO1TimeAboveThreshold register.
+    /// Time (ms) above threshold value that is required to trigger a DO1 pin event.
     /// </summary>
     [DisplayName("TimestampedDO1TimeAboveThresholdPayload")]
-    [Description("Creates a timestamped message payload that time (ms) above threshold value that is required to trigger a DO1 pin event.")]
     public partial class CreateTimestampedDO1TimeAboveThresholdPayload : CreateDO1TimeAboveThresholdPayload
     {
         /// <summary>
-        /// Creates a timestamped message that time (ms) above threshold value that is required to trigger a DO1 pin event.
+        /// Creates a timestamped message for the DO1TimeAboveThreshold register.
         /// </summary>
         /// <param name="timestamp">The timestamp of the message payload, in seconds.</param>
         /// <param name="messageType">Specifies the type of the created message.</param>
@@ -8118,17 +8138,17 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Represents an operator that creates a message payload
-    /// that time (ms) above threshold value that is required to trigger a DO2 pin event.
+    /// Represents an operator that creates a message payload for the DO2TimeAboveThreshold register.
+    /// Time (ms) above threshold value that is required to trigger a DO2 pin event.
     /// </summary>
     [DisplayName("DO2TimeAboveThresholdPayload")]
-    [Description("Creates a message payload that time (ms) above threshold value that is required to trigger a DO2 pin event.")]
+    [Description("Time (ms) above threshold value that is required to trigger a DO2 pin event.")]
     public partial class CreateDO2TimeAboveThresholdPayload
     {
         /// <summary>
-        /// Gets or sets the value that time (ms) above threshold value that is required to trigger a DO2 pin event.
+        /// Gets or sets the value for the DO2TimeAboveThreshold register.
         /// </summary>
-        [Description("The value that time (ms) above threshold value that is required to trigger a DO2 pin event.")]
+        [Description("The value for the DO2TimeAboveThreshold register.")]
         public ushort DO2TimeAboveThreshold { get; set; } = 0;
 
         /// <summary>
@@ -8141,7 +8161,7 @@ namespace Harp.LoadCells
         }
 
         /// <summary>
-        /// Creates a message that time (ms) above threshold value that is required to trigger a DO2 pin event.
+        /// Creates a message for the DO2TimeAboveThreshold register.
         /// </summary>
         /// <param name="messageType">Specifies the type of the created message.</param>
         /// <returns>A new message for the DO2TimeAboveThreshold register.</returns>
@@ -8152,15 +8172,14 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Represents an operator that creates a timestamped message payload
-    /// that time (ms) above threshold value that is required to trigger a DO2 pin event.
+    /// Represents an operator that creates a timestamped message payload for the DO2TimeAboveThreshold register.
+    /// Time (ms) above threshold value that is required to trigger a DO2 pin event.
     /// </summary>
     [DisplayName("TimestampedDO2TimeAboveThresholdPayload")]
-    [Description("Creates a timestamped message payload that time (ms) above threshold value that is required to trigger a DO2 pin event.")]
     public partial class CreateTimestampedDO2TimeAboveThresholdPayload : CreateDO2TimeAboveThresholdPayload
     {
         /// <summary>
-        /// Creates a timestamped message that time (ms) above threshold value that is required to trigger a DO2 pin event.
+        /// Creates a timestamped message for the DO2TimeAboveThreshold register.
         /// </summary>
         /// <param name="timestamp">The timestamp of the message payload, in seconds.</param>
         /// <param name="messageType">Specifies the type of the created message.</param>
@@ -8172,17 +8191,17 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Represents an operator that creates a message payload
-    /// that time (ms) above threshold value that is required to trigger a DO3 pin event.
+    /// Represents an operator that creates a message payload for the DO3TimeAboveThreshold register.
+    /// Time (ms) above threshold value that is required to trigger a DO3 pin event.
     /// </summary>
     [DisplayName("DO3TimeAboveThresholdPayload")]
-    [Description("Creates a message payload that time (ms) above threshold value that is required to trigger a DO3 pin event.")]
+    [Description("Time (ms) above threshold value that is required to trigger a DO3 pin event.")]
     public partial class CreateDO3TimeAboveThresholdPayload
     {
         /// <summary>
-        /// Gets or sets the value that time (ms) above threshold value that is required to trigger a DO3 pin event.
+        /// Gets or sets the value for the DO3TimeAboveThreshold register.
         /// </summary>
-        [Description("The value that time (ms) above threshold value that is required to trigger a DO3 pin event.")]
+        [Description("The value for the DO3TimeAboveThreshold register.")]
         public ushort DO3TimeAboveThreshold { get; set; } = 0;
 
         /// <summary>
@@ -8195,7 +8214,7 @@ namespace Harp.LoadCells
         }
 
         /// <summary>
-        /// Creates a message that time (ms) above threshold value that is required to trigger a DO3 pin event.
+        /// Creates a message for the DO3TimeAboveThreshold register.
         /// </summary>
         /// <param name="messageType">Specifies the type of the created message.</param>
         /// <returns>A new message for the DO3TimeAboveThreshold register.</returns>
@@ -8206,15 +8225,14 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Represents an operator that creates a timestamped message payload
-    /// that time (ms) above threshold value that is required to trigger a DO3 pin event.
+    /// Represents an operator that creates a timestamped message payload for the DO3TimeAboveThreshold register.
+    /// Time (ms) above threshold value that is required to trigger a DO3 pin event.
     /// </summary>
     [DisplayName("TimestampedDO3TimeAboveThresholdPayload")]
-    [Description("Creates a timestamped message payload that time (ms) above threshold value that is required to trigger a DO3 pin event.")]
     public partial class CreateTimestampedDO3TimeAboveThresholdPayload : CreateDO3TimeAboveThresholdPayload
     {
         /// <summary>
-        /// Creates a timestamped message that time (ms) above threshold value that is required to trigger a DO3 pin event.
+        /// Creates a timestamped message for the DO3TimeAboveThreshold register.
         /// </summary>
         /// <param name="timestamp">The timestamp of the message payload, in seconds.</param>
         /// <param name="messageType">Specifies the type of the created message.</param>
@@ -8226,17 +8244,17 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Represents an operator that creates a message payload
-    /// that time (ms) above threshold value that is required to trigger a DO4 pin event.
+    /// Represents an operator that creates a message payload for the DO4TimeAboveThreshold register.
+    /// Time (ms) above threshold value that is required to trigger a DO4 pin event.
     /// </summary>
     [DisplayName("DO4TimeAboveThresholdPayload")]
-    [Description("Creates a message payload that time (ms) above threshold value that is required to trigger a DO4 pin event.")]
+    [Description("Time (ms) above threshold value that is required to trigger a DO4 pin event.")]
     public partial class CreateDO4TimeAboveThresholdPayload
     {
         /// <summary>
-        /// Gets or sets the value that time (ms) above threshold value that is required to trigger a DO4 pin event.
+        /// Gets or sets the value for the DO4TimeAboveThreshold register.
         /// </summary>
-        [Description("The value that time (ms) above threshold value that is required to trigger a DO4 pin event.")]
+        [Description("The value for the DO4TimeAboveThreshold register.")]
         public ushort DO4TimeAboveThreshold { get; set; } = 0;
 
         /// <summary>
@@ -8249,7 +8267,7 @@ namespace Harp.LoadCells
         }
 
         /// <summary>
-        /// Creates a message that time (ms) above threshold value that is required to trigger a DO4 pin event.
+        /// Creates a message for the DO4TimeAboveThreshold register.
         /// </summary>
         /// <param name="messageType">Specifies the type of the created message.</param>
         /// <returns>A new message for the DO4TimeAboveThreshold register.</returns>
@@ -8260,15 +8278,14 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Represents an operator that creates a timestamped message payload
-    /// that time (ms) above threshold value that is required to trigger a DO4 pin event.
+    /// Represents an operator that creates a timestamped message payload for the DO4TimeAboveThreshold register.
+    /// Time (ms) above threshold value that is required to trigger a DO4 pin event.
     /// </summary>
     [DisplayName("TimestampedDO4TimeAboveThresholdPayload")]
-    [Description("Creates a timestamped message payload that time (ms) above threshold value that is required to trigger a DO4 pin event.")]
     public partial class CreateTimestampedDO4TimeAboveThresholdPayload : CreateDO4TimeAboveThresholdPayload
     {
         /// <summary>
-        /// Creates a timestamped message that time (ms) above threshold value that is required to trigger a DO4 pin event.
+        /// Creates a timestamped message for the DO4TimeAboveThreshold register.
         /// </summary>
         /// <param name="timestamp">The timestamp of the message payload, in seconds.</param>
         /// <param name="messageType">Specifies the type of the created message.</param>
@@ -8280,17 +8297,17 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Represents an operator that creates a message payload
-    /// that time (ms) above threshold value that is required to trigger a DO5 pin event.
+    /// Represents an operator that creates a message payload for the DO5TimeAboveThreshold register.
+    /// Time (ms) above threshold value that is required to trigger a DO5 pin event.
     /// </summary>
     [DisplayName("DO5TimeAboveThresholdPayload")]
-    [Description("Creates a message payload that time (ms) above threshold value that is required to trigger a DO5 pin event.")]
+    [Description("Time (ms) above threshold value that is required to trigger a DO5 pin event.")]
     public partial class CreateDO5TimeAboveThresholdPayload
     {
         /// <summary>
-        /// Gets or sets the value that time (ms) above threshold value that is required to trigger a DO5 pin event.
+        /// Gets or sets the value for the DO5TimeAboveThreshold register.
         /// </summary>
-        [Description("The value that time (ms) above threshold value that is required to trigger a DO5 pin event.")]
+        [Description("The value for the DO5TimeAboveThreshold register.")]
         public ushort DO5TimeAboveThreshold { get; set; } = 0;
 
         /// <summary>
@@ -8303,7 +8320,7 @@ namespace Harp.LoadCells
         }
 
         /// <summary>
-        /// Creates a message that time (ms) above threshold value that is required to trigger a DO5 pin event.
+        /// Creates a message for the DO5TimeAboveThreshold register.
         /// </summary>
         /// <param name="messageType">Specifies the type of the created message.</param>
         /// <returns>A new message for the DO5TimeAboveThreshold register.</returns>
@@ -8314,15 +8331,14 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Represents an operator that creates a timestamped message payload
-    /// that time (ms) above threshold value that is required to trigger a DO5 pin event.
+    /// Represents an operator that creates a timestamped message payload for the DO5TimeAboveThreshold register.
+    /// Time (ms) above threshold value that is required to trigger a DO5 pin event.
     /// </summary>
     [DisplayName("TimestampedDO5TimeAboveThresholdPayload")]
-    [Description("Creates a timestamped message payload that time (ms) above threshold value that is required to trigger a DO5 pin event.")]
     public partial class CreateTimestampedDO5TimeAboveThresholdPayload : CreateDO5TimeAboveThresholdPayload
     {
         /// <summary>
-        /// Creates a timestamped message that time (ms) above threshold value that is required to trigger a DO5 pin event.
+        /// Creates a timestamped message for the DO5TimeAboveThreshold register.
         /// </summary>
         /// <param name="timestamp">The timestamp of the message payload, in seconds.</param>
         /// <param name="messageType">Specifies the type of the created message.</param>
@@ -8334,17 +8350,17 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Represents an operator that creates a message payload
-    /// that time (ms) above threshold value that is required to trigger a DO6 pin event.
+    /// Represents an operator that creates a message payload for the DO6TimeAboveThreshold register.
+    /// Time (ms) above threshold value that is required to trigger a DO6 pin event.
     /// </summary>
     [DisplayName("DO6TimeAboveThresholdPayload")]
-    [Description("Creates a message payload that time (ms) above threshold value that is required to trigger a DO6 pin event.")]
+    [Description("Time (ms) above threshold value that is required to trigger a DO6 pin event.")]
     public partial class CreateDO6TimeAboveThresholdPayload
     {
         /// <summary>
-        /// Gets or sets the value that time (ms) above threshold value that is required to trigger a DO6 pin event.
+        /// Gets or sets the value for the DO6TimeAboveThreshold register.
         /// </summary>
-        [Description("The value that time (ms) above threshold value that is required to trigger a DO6 pin event.")]
+        [Description("The value for the DO6TimeAboveThreshold register.")]
         public ushort DO6TimeAboveThreshold { get; set; } = 0;
 
         /// <summary>
@@ -8357,7 +8373,7 @@ namespace Harp.LoadCells
         }
 
         /// <summary>
-        /// Creates a message that time (ms) above threshold value that is required to trigger a DO6 pin event.
+        /// Creates a message for the DO6TimeAboveThreshold register.
         /// </summary>
         /// <param name="messageType">Specifies the type of the created message.</param>
         /// <returns>A new message for the DO6TimeAboveThreshold register.</returns>
@@ -8368,15 +8384,14 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Represents an operator that creates a timestamped message payload
-    /// that time (ms) above threshold value that is required to trigger a DO6 pin event.
+    /// Represents an operator that creates a timestamped message payload for the DO6TimeAboveThreshold register.
+    /// Time (ms) above threshold value that is required to trigger a DO6 pin event.
     /// </summary>
     [DisplayName("TimestampedDO6TimeAboveThresholdPayload")]
-    [Description("Creates a timestamped message payload that time (ms) above threshold value that is required to trigger a DO6 pin event.")]
     public partial class CreateTimestampedDO6TimeAboveThresholdPayload : CreateDO6TimeAboveThresholdPayload
     {
         /// <summary>
-        /// Creates a timestamped message that time (ms) above threshold value that is required to trigger a DO6 pin event.
+        /// Creates a timestamped message for the DO6TimeAboveThreshold register.
         /// </summary>
         /// <param name="timestamp">The timestamp of the message payload, in seconds.</param>
         /// <param name="messageType">Specifies the type of the created message.</param>
@@ -8388,17 +8403,17 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Represents an operator that creates a message payload
-    /// that time (ms) above threshold value that is required to trigger a DO7 pin event.
+    /// Represents an operator that creates a message payload for the DO7TimeAboveThreshold register.
+    /// Time (ms) above threshold value that is required to trigger a DO7 pin event.
     /// </summary>
     [DisplayName("DO7TimeAboveThresholdPayload")]
-    [Description("Creates a message payload that time (ms) above threshold value that is required to trigger a DO7 pin event.")]
+    [Description("Time (ms) above threshold value that is required to trigger a DO7 pin event.")]
     public partial class CreateDO7TimeAboveThresholdPayload
     {
         /// <summary>
-        /// Gets or sets the value that time (ms) above threshold value that is required to trigger a DO7 pin event.
+        /// Gets or sets the value for the DO7TimeAboveThreshold register.
         /// </summary>
-        [Description("The value that time (ms) above threshold value that is required to trigger a DO7 pin event.")]
+        [Description("The value for the DO7TimeAboveThreshold register.")]
         public ushort DO7TimeAboveThreshold { get; set; } = 0;
 
         /// <summary>
@@ -8411,7 +8426,7 @@ namespace Harp.LoadCells
         }
 
         /// <summary>
-        /// Creates a message that time (ms) above threshold value that is required to trigger a DO7 pin event.
+        /// Creates a message for the DO7TimeAboveThreshold register.
         /// </summary>
         /// <param name="messageType">Specifies the type of the created message.</param>
         /// <returns>A new message for the DO7TimeAboveThreshold register.</returns>
@@ -8422,15 +8437,14 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Represents an operator that creates a timestamped message payload
-    /// that time (ms) above threshold value that is required to trigger a DO7 pin event.
+    /// Represents an operator that creates a timestamped message payload for the DO7TimeAboveThreshold register.
+    /// Time (ms) above threshold value that is required to trigger a DO7 pin event.
     /// </summary>
     [DisplayName("TimestampedDO7TimeAboveThresholdPayload")]
-    [Description("Creates a timestamped message payload that time (ms) above threshold value that is required to trigger a DO7 pin event.")]
     public partial class CreateTimestampedDO7TimeAboveThresholdPayload : CreateDO7TimeAboveThresholdPayload
     {
         /// <summary>
-        /// Creates a timestamped message that time (ms) above threshold value that is required to trigger a DO7 pin event.
+        /// Creates a timestamped message for the DO7TimeAboveThreshold register.
         /// </summary>
         /// <param name="timestamp">The timestamp of the message payload, in seconds.</param>
         /// <param name="messageType">Specifies the type of the created message.</param>
@@ -8442,17 +8456,17 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Represents an operator that creates a message payload
-    /// that time (ms) above threshold value that is required to trigger a DO8 pin event.
+    /// Represents an operator that creates a message payload for the DO8TimeAboveThreshold register.
+    /// Time (ms) above threshold value that is required to trigger a DO8 pin event.
     /// </summary>
     [DisplayName("DO8TimeAboveThresholdPayload")]
-    [Description("Creates a message payload that time (ms) above threshold value that is required to trigger a DO8 pin event.")]
+    [Description("Time (ms) above threshold value that is required to trigger a DO8 pin event.")]
     public partial class CreateDO8TimeAboveThresholdPayload
     {
         /// <summary>
-        /// Gets or sets the value that time (ms) above threshold value that is required to trigger a DO8 pin event.
+        /// Gets or sets the value for the DO8TimeAboveThreshold register.
         /// </summary>
-        [Description("The value that time (ms) above threshold value that is required to trigger a DO8 pin event.")]
+        [Description("The value for the DO8TimeAboveThreshold register.")]
         public ushort DO8TimeAboveThreshold { get; set; } = 0;
 
         /// <summary>
@@ -8465,7 +8479,7 @@ namespace Harp.LoadCells
         }
 
         /// <summary>
-        /// Creates a message that time (ms) above threshold value that is required to trigger a DO8 pin event.
+        /// Creates a message for the DO8TimeAboveThreshold register.
         /// </summary>
         /// <param name="messageType">Specifies the type of the created message.</param>
         /// <returns>A new message for the DO8TimeAboveThreshold register.</returns>
@@ -8476,15 +8490,14 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Represents an operator that creates a timestamped message payload
-    /// that time (ms) above threshold value that is required to trigger a DO8 pin event.
+    /// Represents an operator that creates a timestamped message payload for the DO8TimeAboveThreshold register.
+    /// Time (ms) above threshold value that is required to trigger a DO8 pin event.
     /// </summary>
     [DisplayName("TimestampedDO8TimeAboveThresholdPayload")]
-    [Description("Creates a timestamped message payload that time (ms) above threshold value that is required to trigger a DO8 pin event.")]
     public partial class CreateTimestampedDO8TimeAboveThresholdPayload : CreateDO8TimeAboveThresholdPayload
     {
         /// <summary>
-        /// Creates a timestamped message that time (ms) above threshold value that is required to trigger a DO8 pin event.
+        /// Creates a timestamped message for the DO8TimeAboveThreshold register.
         /// </summary>
         /// <param name="timestamp">The timestamp of the message payload, in seconds.</param>
         /// <param name="messageType">Specifies the type of the created message.</param>
@@ -8496,17 +8509,17 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Represents an operator that creates a message payload
-    /// that time (ms) below threshold value that is required to trigger a DO1 pin event.
+    /// Represents an operator that creates a message payload for the DO1TimeBelowThreshold register.
+    /// Time (ms) below threshold value that is required to trigger a DO1 pin event.
     /// </summary>
     [DisplayName("DO1TimeBelowThresholdPayload")]
-    [Description("Creates a message payload that time (ms) below threshold value that is required to trigger a DO1 pin event.")]
+    [Description("Time (ms) below threshold value that is required to trigger a DO1 pin event.")]
     public partial class CreateDO1TimeBelowThresholdPayload
     {
         /// <summary>
-        /// Gets or sets the value that time (ms) below threshold value that is required to trigger a DO1 pin event.
+        /// Gets or sets the value for the DO1TimeBelowThreshold register.
         /// </summary>
-        [Description("The value that time (ms) below threshold value that is required to trigger a DO1 pin event.")]
+        [Description("The value for the DO1TimeBelowThreshold register.")]
         public ushort DO1TimeBelowThreshold { get; set; } = 0;
 
         /// <summary>
@@ -8519,7 +8532,7 @@ namespace Harp.LoadCells
         }
 
         /// <summary>
-        /// Creates a message that time (ms) below threshold value that is required to trigger a DO1 pin event.
+        /// Creates a message for the DO1TimeBelowThreshold register.
         /// </summary>
         /// <param name="messageType">Specifies the type of the created message.</param>
         /// <returns>A new message for the DO1TimeBelowThreshold register.</returns>
@@ -8530,15 +8543,14 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Represents an operator that creates a timestamped message payload
-    /// that time (ms) below threshold value that is required to trigger a DO1 pin event.
+    /// Represents an operator that creates a timestamped message payload for the DO1TimeBelowThreshold register.
+    /// Time (ms) below threshold value that is required to trigger a DO1 pin event.
     /// </summary>
     [DisplayName("TimestampedDO1TimeBelowThresholdPayload")]
-    [Description("Creates a timestamped message payload that time (ms) below threshold value that is required to trigger a DO1 pin event.")]
     public partial class CreateTimestampedDO1TimeBelowThresholdPayload : CreateDO1TimeBelowThresholdPayload
     {
         /// <summary>
-        /// Creates a timestamped message that time (ms) below threshold value that is required to trigger a DO1 pin event.
+        /// Creates a timestamped message for the DO1TimeBelowThreshold register.
         /// </summary>
         /// <param name="timestamp">The timestamp of the message payload, in seconds.</param>
         /// <param name="messageType">Specifies the type of the created message.</param>
@@ -8550,17 +8562,17 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Represents an operator that creates a message payload
-    /// that time (ms) below threshold value that is required to trigger a DO2 pin event.
+    /// Represents an operator that creates a message payload for the DO2TimeBelowThreshold register.
+    /// Time (ms) below threshold value that is required to trigger a DO2 pin event.
     /// </summary>
     [DisplayName("DO2TimeBelowThresholdPayload")]
-    [Description("Creates a message payload that time (ms) below threshold value that is required to trigger a DO2 pin event.")]
+    [Description("Time (ms) below threshold value that is required to trigger a DO2 pin event.")]
     public partial class CreateDO2TimeBelowThresholdPayload
     {
         /// <summary>
-        /// Gets or sets the value that time (ms) below threshold value that is required to trigger a DO2 pin event.
+        /// Gets or sets the value for the DO2TimeBelowThreshold register.
         /// </summary>
-        [Description("The value that time (ms) below threshold value that is required to trigger a DO2 pin event.")]
+        [Description("The value for the DO2TimeBelowThreshold register.")]
         public ushort DO2TimeBelowThreshold { get; set; } = 0;
 
         /// <summary>
@@ -8573,7 +8585,7 @@ namespace Harp.LoadCells
         }
 
         /// <summary>
-        /// Creates a message that time (ms) below threshold value that is required to trigger a DO2 pin event.
+        /// Creates a message for the DO2TimeBelowThreshold register.
         /// </summary>
         /// <param name="messageType">Specifies the type of the created message.</param>
         /// <returns>A new message for the DO2TimeBelowThreshold register.</returns>
@@ -8584,15 +8596,14 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Represents an operator that creates a timestamped message payload
-    /// that time (ms) below threshold value that is required to trigger a DO2 pin event.
+    /// Represents an operator that creates a timestamped message payload for the DO2TimeBelowThreshold register.
+    /// Time (ms) below threshold value that is required to trigger a DO2 pin event.
     /// </summary>
     [DisplayName("TimestampedDO2TimeBelowThresholdPayload")]
-    [Description("Creates a timestamped message payload that time (ms) below threshold value that is required to trigger a DO2 pin event.")]
     public partial class CreateTimestampedDO2TimeBelowThresholdPayload : CreateDO2TimeBelowThresholdPayload
     {
         /// <summary>
-        /// Creates a timestamped message that time (ms) below threshold value that is required to trigger a DO2 pin event.
+        /// Creates a timestamped message for the DO2TimeBelowThreshold register.
         /// </summary>
         /// <param name="timestamp">The timestamp of the message payload, in seconds.</param>
         /// <param name="messageType">Specifies the type of the created message.</param>
@@ -8604,17 +8615,17 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Represents an operator that creates a message payload
-    /// that time (ms) below threshold value that is required to trigger a DO3 pin event.
+    /// Represents an operator that creates a message payload for the DO3TimeBelowThreshold register.
+    /// Time (ms) below threshold value that is required to trigger a DO3 pin event.
     /// </summary>
     [DisplayName("DO3TimeBelowThresholdPayload")]
-    [Description("Creates a message payload that time (ms) below threshold value that is required to trigger a DO3 pin event.")]
+    [Description("Time (ms) below threshold value that is required to trigger a DO3 pin event.")]
     public partial class CreateDO3TimeBelowThresholdPayload
     {
         /// <summary>
-        /// Gets or sets the value that time (ms) below threshold value that is required to trigger a DO3 pin event.
+        /// Gets or sets the value for the DO3TimeBelowThreshold register.
         /// </summary>
-        [Description("The value that time (ms) below threshold value that is required to trigger a DO3 pin event.")]
+        [Description("The value for the DO3TimeBelowThreshold register.")]
         public ushort DO3TimeBelowThreshold { get; set; } = 0;
 
         /// <summary>
@@ -8627,7 +8638,7 @@ namespace Harp.LoadCells
         }
 
         /// <summary>
-        /// Creates a message that time (ms) below threshold value that is required to trigger a DO3 pin event.
+        /// Creates a message for the DO3TimeBelowThreshold register.
         /// </summary>
         /// <param name="messageType">Specifies the type of the created message.</param>
         /// <returns>A new message for the DO3TimeBelowThreshold register.</returns>
@@ -8638,15 +8649,14 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Represents an operator that creates a timestamped message payload
-    /// that time (ms) below threshold value that is required to trigger a DO3 pin event.
+    /// Represents an operator that creates a timestamped message payload for the DO3TimeBelowThreshold register.
+    /// Time (ms) below threshold value that is required to trigger a DO3 pin event.
     /// </summary>
     [DisplayName("TimestampedDO3TimeBelowThresholdPayload")]
-    [Description("Creates a timestamped message payload that time (ms) below threshold value that is required to trigger a DO3 pin event.")]
     public partial class CreateTimestampedDO3TimeBelowThresholdPayload : CreateDO3TimeBelowThresholdPayload
     {
         /// <summary>
-        /// Creates a timestamped message that time (ms) below threshold value that is required to trigger a DO3 pin event.
+        /// Creates a timestamped message for the DO3TimeBelowThreshold register.
         /// </summary>
         /// <param name="timestamp">The timestamp of the message payload, in seconds.</param>
         /// <param name="messageType">Specifies the type of the created message.</param>
@@ -8658,17 +8668,17 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Represents an operator that creates a message payload
-    /// that time (ms) below threshold value that is required to trigger a DO4 pin event.
+    /// Represents an operator that creates a message payload for the DO4TimeBelowThreshold register.
+    /// Time (ms) below threshold value that is required to trigger a DO4 pin event.
     /// </summary>
     [DisplayName("DO4TimeBelowThresholdPayload")]
-    [Description("Creates a message payload that time (ms) below threshold value that is required to trigger a DO4 pin event.")]
+    [Description("Time (ms) below threshold value that is required to trigger a DO4 pin event.")]
     public partial class CreateDO4TimeBelowThresholdPayload
     {
         /// <summary>
-        /// Gets or sets the value that time (ms) below threshold value that is required to trigger a DO4 pin event.
+        /// Gets or sets the value for the DO4TimeBelowThreshold register.
         /// </summary>
-        [Description("The value that time (ms) below threshold value that is required to trigger a DO4 pin event.")]
+        [Description("The value for the DO4TimeBelowThreshold register.")]
         public ushort DO4TimeBelowThreshold { get; set; } = 0;
 
         /// <summary>
@@ -8681,7 +8691,7 @@ namespace Harp.LoadCells
         }
 
         /// <summary>
-        /// Creates a message that time (ms) below threshold value that is required to trigger a DO4 pin event.
+        /// Creates a message for the DO4TimeBelowThreshold register.
         /// </summary>
         /// <param name="messageType">Specifies the type of the created message.</param>
         /// <returns>A new message for the DO4TimeBelowThreshold register.</returns>
@@ -8692,15 +8702,14 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Represents an operator that creates a timestamped message payload
-    /// that time (ms) below threshold value that is required to trigger a DO4 pin event.
+    /// Represents an operator that creates a timestamped message payload for the DO4TimeBelowThreshold register.
+    /// Time (ms) below threshold value that is required to trigger a DO4 pin event.
     /// </summary>
     [DisplayName("TimestampedDO4TimeBelowThresholdPayload")]
-    [Description("Creates a timestamped message payload that time (ms) below threshold value that is required to trigger a DO4 pin event.")]
     public partial class CreateTimestampedDO4TimeBelowThresholdPayload : CreateDO4TimeBelowThresholdPayload
     {
         /// <summary>
-        /// Creates a timestamped message that time (ms) below threshold value that is required to trigger a DO4 pin event.
+        /// Creates a timestamped message for the DO4TimeBelowThreshold register.
         /// </summary>
         /// <param name="timestamp">The timestamp of the message payload, in seconds.</param>
         /// <param name="messageType">Specifies the type of the created message.</param>
@@ -8712,17 +8721,17 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Represents an operator that creates a message payload
-    /// that time (ms) below threshold value that is required to trigger a DO5 pin event.
+    /// Represents an operator that creates a message payload for the DO5TimeBelowThreshold register.
+    /// Time (ms) below threshold value that is required to trigger a DO5 pin event.
     /// </summary>
     [DisplayName("DO5TimeBelowThresholdPayload")]
-    [Description("Creates a message payload that time (ms) below threshold value that is required to trigger a DO5 pin event.")]
+    [Description("Time (ms) below threshold value that is required to trigger a DO5 pin event.")]
     public partial class CreateDO5TimeBelowThresholdPayload
     {
         /// <summary>
-        /// Gets or sets the value that time (ms) below threshold value that is required to trigger a DO5 pin event.
+        /// Gets or sets the value for the DO5TimeBelowThreshold register.
         /// </summary>
-        [Description("The value that time (ms) below threshold value that is required to trigger a DO5 pin event.")]
+        [Description("The value for the DO5TimeBelowThreshold register.")]
         public ushort DO5TimeBelowThreshold { get; set; } = 0;
 
         /// <summary>
@@ -8735,7 +8744,7 @@ namespace Harp.LoadCells
         }
 
         /// <summary>
-        /// Creates a message that time (ms) below threshold value that is required to trigger a DO5 pin event.
+        /// Creates a message for the DO5TimeBelowThreshold register.
         /// </summary>
         /// <param name="messageType">Specifies the type of the created message.</param>
         /// <returns>A new message for the DO5TimeBelowThreshold register.</returns>
@@ -8746,15 +8755,14 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Represents an operator that creates a timestamped message payload
-    /// that time (ms) below threshold value that is required to trigger a DO5 pin event.
+    /// Represents an operator that creates a timestamped message payload for the DO5TimeBelowThreshold register.
+    /// Time (ms) below threshold value that is required to trigger a DO5 pin event.
     /// </summary>
     [DisplayName("TimestampedDO5TimeBelowThresholdPayload")]
-    [Description("Creates a timestamped message payload that time (ms) below threshold value that is required to trigger a DO5 pin event.")]
     public partial class CreateTimestampedDO5TimeBelowThresholdPayload : CreateDO5TimeBelowThresholdPayload
     {
         /// <summary>
-        /// Creates a timestamped message that time (ms) below threshold value that is required to trigger a DO5 pin event.
+        /// Creates a timestamped message for the DO5TimeBelowThreshold register.
         /// </summary>
         /// <param name="timestamp">The timestamp of the message payload, in seconds.</param>
         /// <param name="messageType">Specifies the type of the created message.</param>
@@ -8766,17 +8774,17 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Represents an operator that creates a message payload
-    /// that time (ms) below threshold value that is required to trigger a DO6 pin event.
+    /// Represents an operator that creates a message payload for the DO6TimeBelowThreshold register.
+    /// Time (ms) below threshold value that is required to trigger a DO6 pin event.
     /// </summary>
     [DisplayName("DO6TimeBelowThresholdPayload")]
-    [Description("Creates a message payload that time (ms) below threshold value that is required to trigger a DO6 pin event.")]
+    [Description("Time (ms) below threshold value that is required to trigger a DO6 pin event.")]
     public partial class CreateDO6TimeBelowThresholdPayload
     {
         /// <summary>
-        /// Gets or sets the value that time (ms) below threshold value that is required to trigger a DO6 pin event.
+        /// Gets or sets the value for the DO6TimeBelowThreshold register.
         /// </summary>
-        [Description("The value that time (ms) below threshold value that is required to trigger a DO6 pin event.")]
+        [Description("The value for the DO6TimeBelowThreshold register.")]
         public ushort DO6TimeBelowThreshold { get; set; } = 0;
 
         /// <summary>
@@ -8789,7 +8797,7 @@ namespace Harp.LoadCells
         }
 
         /// <summary>
-        /// Creates a message that time (ms) below threshold value that is required to trigger a DO6 pin event.
+        /// Creates a message for the DO6TimeBelowThreshold register.
         /// </summary>
         /// <param name="messageType">Specifies the type of the created message.</param>
         /// <returns>A new message for the DO6TimeBelowThreshold register.</returns>
@@ -8800,15 +8808,14 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Represents an operator that creates a timestamped message payload
-    /// that time (ms) below threshold value that is required to trigger a DO6 pin event.
+    /// Represents an operator that creates a timestamped message payload for the DO6TimeBelowThreshold register.
+    /// Time (ms) below threshold value that is required to trigger a DO6 pin event.
     /// </summary>
     [DisplayName("TimestampedDO6TimeBelowThresholdPayload")]
-    [Description("Creates a timestamped message payload that time (ms) below threshold value that is required to trigger a DO6 pin event.")]
     public partial class CreateTimestampedDO6TimeBelowThresholdPayload : CreateDO6TimeBelowThresholdPayload
     {
         /// <summary>
-        /// Creates a timestamped message that time (ms) below threshold value that is required to trigger a DO6 pin event.
+        /// Creates a timestamped message for the DO6TimeBelowThreshold register.
         /// </summary>
         /// <param name="timestamp">The timestamp of the message payload, in seconds.</param>
         /// <param name="messageType">Specifies the type of the created message.</param>
@@ -8820,17 +8827,17 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Represents an operator that creates a message payload
-    /// that time (ms) below threshold value that is required to trigger a DO7 pin event.
+    /// Represents an operator that creates a message payload for the DO7TimeBelowThreshold register.
+    /// Time (ms) below threshold value that is required to trigger a DO7 pin event.
     /// </summary>
     [DisplayName("DO7TimeBelowThresholdPayload")]
-    [Description("Creates a message payload that time (ms) below threshold value that is required to trigger a DO7 pin event.")]
+    [Description("Time (ms) below threshold value that is required to trigger a DO7 pin event.")]
     public partial class CreateDO7TimeBelowThresholdPayload
     {
         /// <summary>
-        /// Gets or sets the value that time (ms) below threshold value that is required to trigger a DO7 pin event.
+        /// Gets or sets the value for the DO7TimeBelowThreshold register.
         /// </summary>
-        [Description("The value that time (ms) below threshold value that is required to trigger a DO7 pin event.")]
+        [Description("The value for the DO7TimeBelowThreshold register.")]
         public ushort DO7TimeBelowThreshold { get; set; } = 0;
 
         /// <summary>
@@ -8843,7 +8850,7 @@ namespace Harp.LoadCells
         }
 
         /// <summary>
-        /// Creates a message that time (ms) below threshold value that is required to trigger a DO7 pin event.
+        /// Creates a message for the DO7TimeBelowThreshold register.
         /// </summary>
         /// <param name="messageType">Specifies the type of the created message.</param>
         /// <returns>A new message for the DO7TimeBelowThreshold register.</returns>
@@ -8854,15 +8861,14 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Represents an operator that creates a timestamped message payload
-    /// that time (ms) below threshold value that is required to trigger a DO7 pin event.
+    /// Represents an operator that creates a timestamped message payload for the DO7TimeBelowThreshold register.
+    /// Time (ms) below threshold value that is required to trigger a DO7 pin event.
     /// </summary>
     [DisplayName("TimestampedDO7TimeBelowThresholdPayload")]
-    [Description("Creates a timestamped message payload that time (ms) below threshold value that is required to trigger a DO7 pin event.")]
     public partial class CreateTimestampedDO7TimeBelowThresholdPayload : CreateDO7TimeBelowThresholdPayload
     {
         /// <summary>
-        /// Creates a timestamped message that time (ms) below threshold value that is required to trigger a DO7 pin event.
+        /// Creates a timestamped message for the DO7TimeBelowThreshold register.
         /// </summary>
         /// <param name="timestamp">The timestamp of the message payload, in seconds.</param>
         /// <param name="messageType">Specifies the type of the created message.</param>
@@ -8874,17 +8880,17 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Represents an operator that creates a message payload
-    /// that time (ms) below threshold value that is required to trigger a DO8 pin event.
+    /// Represents an operator that creates a message payload for the DO8TimeBelowThreshold register.
+    /// Time (ms) below threshold value that is required to trigger a DO8 pin event.
     /// </summary>
     [DisplayName("DO8TimeBelowThresholdPayload")]
-    [Description("Creates a message payload that time (ms) below threshold value that is required to trigger a DO8 pin event.")]
+    [Description("Time (ms) below threshold value that is required to trigger a DO8 pin event.")]
     public partial class CreateDO8TimeBelowThresholdPayload
     {
         /// <summary>
-        /// Gets or sets the value that time (ms) below threshold value that is required to trigger a DO8 pin event.
+        /// Gets or sets the value for the DO8TimeBelowThreshold register.
         /// </summary>
-        [Description("The value that time (ms) below threshold value that is required to trigger a DO8 pin event.")]
+        [Description("The value for the DO8TimeBelowThreshold register.")]
         public ushort DO8TimeBelowThreshold { get; set; } = 0;
 
         /// <summary>
@@ -8897,7 +8903,7 @@ namespace Harp.LoadCells
         }
 
         /// <summary>
-        /// Creates a message that time (ms) below threshold value that is required to trigger a DO8 pin event.
+        /// Creates a message for the DO8TimeBelowThreshold register.
         /// </summary>
         /// <param name="messageType">Specifies the type of the created message.</param>
         /// <returns>A new message for the DO8TimeBelowThreshold register.</returns>
@@ -8908,15 +8914,14 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Represents an operator that creates a timestamped message payload
-    /// that time (ms) below threshold value that is required to trigger a DO8 pin event.
+    /// Represents an operator that creates a timestamped message payload for the DO8TimeBelowThreshold register.
+    /// Time (ms) below threshold value that is required to trigger a DO8 pin event.
     /// </summary>
     [DisplayName("TimestampedDO8TimeBelowThresholdPayload")]
-    [Description("Creates a timestamped message payload that time (ms) below threshold value that is required to trigger a DO8 pin event.")]
     public partial class CreateTimestampedDO8TimeBelowThresholdPayload : CreateDO8TimeBelowThresholdPayload
     {
         /// <summary>
-        /// Creates a timestamped message that time (ms) below threshold value that is required to trigger a DO8 pin event.
+        /// Creates a timestamped message for the DO8TimeBelowThreshold register.
         /// </summary>
         /// <param name="timestamp">The timestamp of the message payload, in seconds.</param>
         /// <param name="messageType">Specifies the type of the created message.</param>
@@ -8928,17 +8933,17 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Represents an operator that creates a message payload
-    /// that specifies the active events in the device.
+    /// Represents an operator that creates a message payload for the EnableEvents register.
+    /// Specifies the active events in the device.
     /// </summary>
     [DisplayName("EnableEventsPayload")]
-    [Description("Creates a message payload that specifies the active events in the device.")]
+    [Description("Specifies the active events in the device.")]
     public partial class CreateEnableEventsPayload
     {
         /// <summary>
-        /// Gets or sets the value that specifies the active events in the device.
+        /// Gets or sets the value for the EnableEvents register.
         /// </summary>
-        [Description("The value that specifies the active events in the device.")]
+        [Description("The value for the EnableEvents register.")]
         public LoadCellEvents EnableEvents { get; set; }
 
         /// <summary>
@@ -8951,7 +8956,7 @@ namespace Harp.LoadCells
         }
 
         /// <summary>
-        /// Creates a message that specifies the active events in the device.
+        /// Creates a message for the EnableEvents register.
         /// </summary>
         /// <param name="messageType">Specifies the type of the created message.</param>
         /// <returns>A new message for the EnableEvents register.</returns>
@@ -8962,15 +8967,14 @@ namespace Harp.LoadCells
     }
 
     /// <summary>
-    /// Represents an operator that creates a timestamped message payload
-    /// that specifies the active events in the device.
+    /// Represents an operator that creates a timestamped message payload for the EnableEvents register.
+    /// Specifies the active events in the device.
     /// </summary>
     [DisplayName("TimestampedEnableEventsPayload")]
-    [Description("Creates a timestamped message payload that specifies the active events in the device.")]
     public partial class CreateTimestampedEnableEventsPayload : CreateEnableEventsPayload
     {
         /// <summary>
-        /// Creates a timestamped message that specifies the active events in the device.
+        /// Creates a timestamped message for the EnableEvents register.
         /// </summary>
         /// <param name="timestamp">The timestamp of the message payload, in seconds.</param>
         /// <param name="messageType">Specifies the type of the created message.</param>
